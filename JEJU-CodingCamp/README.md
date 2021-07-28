@@ -16,10 +16,11 @@ _학습 컨텐츠는 인프런의 Jeju codingcamp 이다._
 
 ## _Planning Chart_
 
-|    Date     |        content         |          check          |
-| :---------: | :--------------------: | :---------------------: |
-| ***07.27*** | Chapter 1-1. 문제 01 ~ | :ballot_box_with_check: |
-| ***07.28*** |                        | :ballot_box_with_check: |
-| ***07.29*** | Chapter 1-1. 문제 01 ~ | :ballot_box_with_check: |
+|    Date     |                    content                     |          check          |
+| :---------: | :--------------------------------------------: | :---------------------: |
+| ***07.27*** | Chapter 1-1.  & Chapter 1-2. 문제 01 ~ 문제 20 | :ballot_box_with_check: |
+| ***07.28*** |         Chapter 1-3. 문제 21 ~ 문제 30         | :ballot_box_with_check: |
+| ***07.29*** |                                                | :ballot_box_with_check: |
 
 <br>
+
