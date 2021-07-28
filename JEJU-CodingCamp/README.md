@@ -20,6 +20,6 @@ _학습 컨텐츠는 인프런의 Jeju codingcamp 이다._
 | :---------: | :--------------------: | :---------------------: |
 | ***07.27*** | Chapter 1-1. 문제 01 ~ | :ballot_box_with_check: |
 | ***07.28*** |                        | :ballot_box_with_check: |
-| ***07.29*** |                        | :ballot_box_with_check: |
+| ***07.29*** | Chapter 1-1. 문제 01 ~ | :ballot_box_with_check: |
 
 <br>
