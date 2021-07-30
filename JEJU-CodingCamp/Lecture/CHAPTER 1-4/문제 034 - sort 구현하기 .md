@@ -53,13 +53,20 @@ console.log(unsorted.split(" "));	// (6) ['176', '156', '155', '165', '166', '1
 console.log(unsorted.split(" ").sort()); // (6) ['155', '156', '165', '166', '169', '176']
 
 // 5.
-unsorted.split(" ").sort(function(a,b){
-   console.log(a,b);
-    return a - b;
-});
+sorted = (unsorted.split(" ").sort(function(a,b){console.log(a,b);return a - b;})).join(" ");
+
+// join이라는 메서드는 배열에 있는 원소들을 하나로 묶어 문자열로 반환해준다. 
+// 이때 원소와 원소 사이에 공백을 넣으면 공백 문자로 반환한다.
+
+
+console.log(sorted);
+
+if(unsorted === sorted){
+    console.log("Yes");
+}else{
+    console.log("No");
+}
 ```
-
-
 
 
 
@@ -71,5 +78,5 @@ unsorted.split(" ").sort(function(a,b){
 
 ### :diamond_shape_with_a_dot_inside: 추가 학습
 
-###  :one: String.prototype.toUpperCase()
+###  :one: sort() 메서드
 
