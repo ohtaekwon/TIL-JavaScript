@@ -43,3 +43,50 @@ for(var item in store){
   - *for-in*반복문을 사용할 때는 `hasOwnProperty`를 통해 객체 안에 속성이 있는지 한 번 더 확인한다. 
 - `※4`, 정상적으로 접근한 요소에 대해 출력한다. *item*에는 순회하며 접근한 각 요소의 속성명(키 정보)이 순서대로 `snack`, `flower`, `beverage`가 할당된다.
 
+<br>
+
+---
+
+<br>
+
+### _:diamond_shape_with_a_dot_inside: 참고_
+
+# Object.prototype.hasOwnProperty()
+
+`hasOwnProperty()` 메소드는 객체가 특정 프로퍼티를 가지고 있는지를 나타내는 불리언 값을 반환한다.
+
+```javascript
+const object1 = {};
+object1.property1 = 42;
+
+console.log(object1.hasOwnProperty('property1'));
+// expected output: true
+
+console.log(object1.hasOwnProperty('toString'));
+// expected output: false
+
+console.log(object1.hasOwnProperty('hasOwnProperty'));
+// expected output: false
+
+```
+
+##### :pencil: ​구문
+
+```javascript
+obj.hasOwnProperty(prop)
+```
+
+<br>
+
+##### :pencil: ​매개변수
+
+##### 1.**prop**
+
+: 테스트하려는 프로퍼티의 명칭
+
+<br>
+
+##### :pencil: ​설명
+
+모든 객체는 `hasOwnProperty` 를 상속하는 `Object`의 자식이다. 이 메소드는 객체가 특정 프로퍼티를 자기만의 직접적인 프로퍼티로서 소유하고 있는지를 판단하는데 사용된다.  `in`연산과는 다르게, 이 메소드는 객체의 프로토타입 체인을 확인하지는 않는다.
+
