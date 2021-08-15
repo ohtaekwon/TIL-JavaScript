@@ -14,3 +14,32 @@ for(속성명 in 반복할 대상){
 }
 ```
 
+##### :pencil: ​풀이
+
+반복문을 통해 내부 요소를 하나씩 순회할 때마다, 각 요소의 키(Key) 정보가 *for in*에서 정의한 속성명으로 선언과 동시에 할당된다. 
+
+```javascript
+//-----※1. 변수 store에 리터럴 변수 선언
+var store = {snack : 1000, flower : 5000, beverage : 2000};
+
+
+//------※2. for in문 선언
+for(var item in store){
+    //-------※3. 
+    if(!store.hasOwnProperty(item)) continue;
+    //-------※4. 
+    console.log(item + '는 가격이 ' + store[item] + ' 입니다.')
+}
+
+// snack는 가격이 1000 입니다.
+// flower는 가격이 5000 입니다.
+// beverage는 가격이 2000 입니다.
+```
+
+- `※1`, *store* 변수에 객체값을 할당한다.
+- `※2`, *store* 객체를 순환하는 *for-in* 반복문이다. 변수 *item*은 *store* 객체의 요소를 접근하는 속성이다. 
+- `※3`, *for-in* 반복문으로 내부 요소 정보가 전달되어 코드가 실행된다. 매 반복마다 `hasOwnProperty`를 이용하여 *store* 객체에 *item* 키 정보가 있는지 확인한다. 
+  - 없으면, **continue**를 통해 아래 코드는 실행하지 않고 다음 순서로 넘어간다. 
+  - *for-in*반복문을 사용할 때는 `hasOwnProperty`를 통해 객체 안에 속성이 있는지 한 번 더 확인한다. 
+- `※4`, 정상적으로 접근한 요소에 대해 출력한다. *item*에는 순회하며 접근한 각 요소의 속성명(키 정보)이 순서대로 `snack`, `flower`, `beverage`가 할당된다.
+
