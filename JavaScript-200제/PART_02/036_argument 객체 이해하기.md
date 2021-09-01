@@ -59,24 +59,42 @@ arguments[1] = 'new value';
 // 1.
 function sum(){
     var total = 0;
-    for(var i=0; i<argument.length; i++){
+    for(var i=0; i<arguments.length; i++){
         total += arguments[i];
     }
     // 1-1.
-    console.log(argument instanceof Array);
+    console.log(arguments instanceof Array);
     return total;
 }
 
 // 2.
-var sumOf1to3 = sum(1,2,3);
-console.log(sumOf1to3);
+var sumOf1to3 = sum(1, 2, 3);
+console.log(sumOf1to3);					// false
+										// 6
+
+
+
+function testArg(){
+    // 3.
+    var newArr = Array.prototype.slice.call(arguments);
+    console.log(newArr);
+    // 3-1.
+    console.log(newArr.indexOf('b'));
+    // 3-2.
+    console.log(arguments.indexOf('b'));
+}
+testArg('a', 'b');
 ```
 
 - `1.` `sum`함수를 정의하면서 내부에 **argument** 객체를 통해 전달된 인자의 합을 반환한다. **argument** 객체는 배열과 유사하게 인덱스를 통해 접근할 수 있다. 
   - 하지만, *length* 속성 외에는 배열의 어떠한 속성과 메소드를 가지고 있지 않다. 
-
 - `1-1.` *instanceof* 연산자를 이용하여 *arguments* 객체가 배열이 아닌 것을 확인할 수 있다.
-- 
+- `2.` `sum` 함수는 매개변수를 정의하고 있지 않지만, 전달 인자로는 `1`, `2` ,`3`을 전달하고 있다. 
+  - 이때 별도의 에러가 발생하지 않는다.
+- `3.` *arguments* 객체를 배열로 바꾸기 위해 배열의 프로토타입에 정의된 *slice* 메소드를 호출한다. 이렇게 하면 *arguments* 객체의 요소들을 복사하는 새로운 배열이 만들어진다. 
+- `3-1.` 배열이기 때문에 *indexOf* 메소드를 사용하면 문자열 `b`의 인덱스를 반환한다. 
+- `3-2.` *arguments* 객체는 배열이 아니기 때문에 에러가 발생한다. 
+
 
 
 
