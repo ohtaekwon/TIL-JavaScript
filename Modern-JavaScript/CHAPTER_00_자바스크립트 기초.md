@@ -1,4 +1,4 @@
-#  CHAPTER 0
+#  CHAPTER 00
 
 ###  :pencil: ***자바스크립트 기초***
 
@@ -41,4 +41,91 @@ script src="/home/sciprt.js"></script>
 `script` 태그 안에 코드를 작성하기보다는 파일을 넣어서 브라우저가 가져오는 파일 수에 관계 없이 한 번에 다운로드하고 캐시하게 하는 것이 좋다. 
 
 이 방식에서는 **캐시된 버전의 파일을 사용할 수 있으므로 성능상으이 이점이 있다.**
+
+<br>
+
+---
+
+### :page_facing_up: 0.1. 변수
+
+### 0.1.1. 변수란?
+
+**변수(variable)** 는 값을 담기 위한 공간이다. 예를 들어 *사용자 이름*, *주소*, *쇼핑몰 사이트의 상품 항목* 등등의 **값을 저장하기 위해 변수를 사용한다.**
+
+<br>
+
+##### _ES6(ES2015) 이전 변수 선언 방법_
+
+```javascript
+var username = "Alberto Mantalesi";
+```
+
+<br>
+
+##### _ES6(ES2015) 변수 선언 방법_
+
+```javascript
+let username = "Alberto Montalesi";
+const username = "Alberto Montalesi";
+```
+
+변수를 선언하는 키워드 : `var`, `const`, `let`
+
+- **const** 키워드로 생성된 변수는 이름에서 알 수 있듯 **상수(constant)** 이므로 그 값을 덮어 쓸 수 없다.
+
+```javascript
+const age = 26;
+age =27;		// Uncaught TypeError: Assignment to constant variable.
+```
+
+- **const** 로 선언한 변수에는 새 값을 할당할 수 없다.
+
+<br>
+
+```javascript
+let height = 190;
+height = 189;	// 189
+```
+
+- 이번에는 오류가 발생하지 않는다. 앞의 `var` 키워드와 마찬가지로 변수에 값을 **재할당**할 수 있다.
+
+<br>
+
+### `let`과 `const`의 사용 차이
+
+- `const` : 값을 재할당해야 하는 상황이 아닐 경우
+- `let` : 나중에 `const`로 선언한 변수 중 하나를 재할당해야 할 경우
+
+<br>
+
+### 0.1.2. 변수 명명법
+
+변수에 이름을 붙일 때 신경 써야 하는 규칙이 있다. 
+
+```javascript
+// 변수명은 숫자로 시작할 수 없다.
+let 1apple = "one apple";    // 불가능
+
+// 변수명에는 공백, 기호, 마침표가 들어갈 수 없다.
+let hello! = "hello!"; 		// 불가능
+```
+
+변수 이름을 선택할 때 가장 권장하는 방식은 변수 이름 자체가 변수를 설명할 수 있게 하는 방식이다.
+
+- 두문자어, 약어, 의미없는 이름 사용 지양
+
+```javascript
+// 나쁜 예 1)
+let cid = 12;			 // 12 가 무슨의미인지 모름
+
+// 좋은 예 1)
+let clientID = 12;		// Client ID를 의미하는 변수
+
+// 나쁜 예 2)
+let id = 12;			// 무순 ID? ueserID? dogID? catID?
+
+// 좋은 예 2)
+let userID = 12;		// 구체적으로!! USER의 ID
+```
+
 
