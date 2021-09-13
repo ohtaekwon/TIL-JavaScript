@@ -178,9 +178,254 @@ _**각 자료형의 사용**_
 
    ```javascript
    let userName = "OHTAEKWON";
+   console.log(userName);				// OHTAEKWON
    ```
 
-   
+<br>
+
+2. **number**는 숫자로 된 값을 나타내는 데 사용된다.
+
+   - 자바스크립트에는 **정수**만을 따로 표현하는 자료형이 따로 없다.
+
+   ```javascript
+   let age = 25;
+   ```
+
+<br>
+
+3. **boolean**은 *true*(참) 또는 *false*(거짓) 값을 나타내는 데 사용된다.
+
+   ```javascript
+   let married = false;
+   married			// false
+   ```
+
+<br>
+
+4. **null** 은 **'값이 없음'**을 나타낸다.
+
+<br>
+
+5. **undefined**는 **'정의되지 않은 값'**을 나타낸다.
+
+<br>
+
+6. **symbol**(심벌)은 고유하고 변경할 수 없는 값을 나타낸다.
+   - `ES6`에 추가된 자료형으로, `원시 자료형` 중 가장 최근에 추가된 것이다.
+
+<br>
+
+###  0.1.3 객체
 
 
 
+6개의 원시 자료형은 **null** 값이든, **true**든, **false**든 하나의 값만 담을 수 있지만, **객체(object)**는 **여러 속성의 모음을 저장**하는데 사용할 수 있다.
+
+```javascript
+const car = {
+    wheels : 4,
+    color : "red",
+};
+```
+
+**차(car)**의 속성을 저장하는 데 사용하는 간단한 객체이다.
+
+각 속성에서는 **키**(첫 행의 경우 **wheels** )와 **값**(첫 행의 경우 4)이 있다.
+**키**의 자료형은 **string 자료형**이지만 **값**은 **모든 자료형**이 될 수 있으며, 심지어 함수가 될 수도 있다.
+
+**값**이 함수이면 **메서드**를 호출하는 셈이 된다.
+
+```javascript
+const car = {
+    wheel : 4,
+    color : "red",
+    drive : function(){
+        console.log('wroom wroom')
+    },
+};
+
+console.log(Object.keys(car)[0]);			// wheels
+console.log(Object.keys(car)[1]);			// color
+console.log(Object.keys(car)[2]);			// drive
+
+console.log(typeof Object.keys(car)[0]);	// string
+
+car.drive();								// wroom wroom
+```
+
+이와 같이 `car` 객체에서 `drive` 함수를 호출할 수 있다.
+
+<br>
+
+###  0.1.4  빈 객체 생성하기
+
+객체를 생성할 때에는 속성을 선언할 필요가 없다.
+
+빈 객체를 만드는 방법은 **두 가지**가 있다.
+
+```javascript
+// 1.
+const car = new Object();
+
+// 2.
+const car = {} 
+```
+
+- `2.` 방식이 더 일반적으로 사용되는데, 이를 **객체 리터럴**(object literal)이라고 부른다. 
+
+비어 있는 새 `car` 객체가 있으므로, 새 속성을 추가할 수 있다.
+
+```javascript
+car.color = 'red';
+console.log(car);			// {color: 'red'}
+```
+
+**점 표기법**(**dot notation**)을 사용하여 **객체** `car`에 새 속성을 추가한다.
+
+<br>
+
+_객체의 속성에 접근할 때는 **점 표기법**과 **대괄호 표기법**이 있다._
+
+```javascript
+const car = {
+    wheels : 4,
+    color : 'red',
+};
+
+console.log(car.wheels);			// 4
+
+console.log(car['color']);			// red
+```
+
+**점 표기법**과 **대괄호 표기법**은 완전히 동일한 것이 아니다. 
+
+- 여러 단어로 이뤄진 속성의 경우 **점 표기법**을 사용할 수 없다.
+
+```javascript
+const car = {
+    wheels : 4,
+    color : 'red',
+    "goes fast": true 
+};
+
+console.log(car.goes fast);			// SyntaxError
+console.log(car['goes fast']);		// true
+```
+
+여러 단어로 된 속성을 사용하려면 해당 이름을 **따옴표**로 묶어야 하기 때문에, **대괄호 표기법**으로만 접근할 수 있다.
+
+대괄호 표기법을 사용하는 또 다른 경우는 **키**를 사용해서 **객체**의 속성에 접근해야 할 때이다.
+
+애플리케이션이 사용자로부터 입력을 받은 다음, 입력받은 값을 객체에 접근하는데 사용할 변수에 저장하는 경우
+
+- 예를 들어, 사용자가 자동차를 찾고 있을 때, 애플리케이션에서는 사용자에게 좋아하는 자동차 브랜드를 알려달라고 요청한다.
+- 사용자가 선택한 브랜드는 적절한 모델을 출력하기 위한 **키**가 된다.
+
+```javascript
+const cars = {
+    ferrari : "california",
+    porsche : "911",
+    bugatti : "veyron",
+};
+
+// 사용자 입력
+const key = "ferrari";
+console.log(cars.key)			// undefiend
+
+console.log(cars['key']);		// undefined
+
+console.log(cars[key]);			// california
+// 이와같이, 변수에 저장된 키를 통해 객체의 속성에 접근하려면 대괄호 표기법을 사용해야 한다.
+console.log(cars[key][0]);		// c
+```
+
+_**key**는 문자열이 아닌 변수 이름이므로 따옴표 표기를 해서는 안 된다._
+
+<br>
+
+###  0.1.5 객체의 복사
+
+원시 자료형과는 달리 객체를 복사할 떄는 **참조 방식**이 쓰인다.
+
+```javascript
+let car = {
+    color : 'red',
+};
+
+let secondCar = car;
+```
+
+여기서 `secondCar`는 그 자체로 객체가 아니라 `car`에 대한 참조, 즉 **주소(address)**를 저장한다.
+
+```javascript
+// car 객체 생성
+let car = {
+    color : 'red',
+};
+
+// secondCar에 car에 대한 주소 저장
+let secondCar = car;
+
+// car 객체에 wheels 속성 추가 : 키(wheels)/ 값(4)
+car.wheels = 4;
+
+console.log(car);		// {color: 'red', wheels: 4}
+console.log(secondCar)	// {color: 'red', wheels: 4}
+```
+
+결과를 보면 `secondCar`는 단순히 `car`에 대한 참조만 저장하기 때문에 `car`를 수정하면 `secondCar`도 변경된다.
+
+```javascript
+console.log(car == secondCar);			// true
+console.log(car === secondCar);			// true
+```
+
+**행동 연산자(equality)** `==`를 사용하든, **완전 행동 연산자(strict equality)** `===` 를 사용하든 **true**가 반환된다. 
+
+- 두 객체가 동일하다는 의미이다.
+- 동일한 객체를 비교할 때에만 **true**가 반환된다.
+
+<br>
+
+#### _빈 객체끼리 비교  vs. 동일한 속성을 가진 객체끼리 비교_
+
+```javascript
+const emptyObj1 = {};
+const emptyObj2 = {};
+
+emptyObj1 == emptyObj2;			// false
+emptyObj1 === emptyObj2; 		// false
+
+const obj1 = {a:1};
+const obj2 = {a:1};
+
+obj1 == obj2;					// false
+obj1 === obj2;					// false
+```
+
+- 동일한 객체를 비교할 때만 **true**를 반환받을 수 있다.
+- 자바스크립트에서 객체의 복사본을 만드는 방법
+  - `Object.assign()`
+
+```javascript
+const car = {
+    color:'red',
+};
+
+// 1.
+const secondCar = Object.assign({},car);
+
+car.wheels = 4;
+
+console.log(car);						// {color: 'red', wheels: 4}
+console.log(secondCar);					// {color: 'red'}
+```
+
+- 이렇게 하면 `car`를 업데이트해도 `secondCar`에는 영향을 주지 않는다.
+- `Object.assign()`
+  - 첫 번째 인수 : 복사본에 해당하는 객체
+  - 두 번째 인수 : 원본에 해당하는 객체
+
+- `1.` 빈 객체를 복사본으로 넣고, `car`를 원본으로 넣는다.
+
+<br>
