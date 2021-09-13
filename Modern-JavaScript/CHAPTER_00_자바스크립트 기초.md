@@ -429,3 +429,53 @@ console.log(secondCar);					// {color: 'red'}
 - `1.` 빈 객체를 복사본으로 넣고, `car`를 원본으로 넣는다.
 
 <br>
+
+###  0.1.6  배열
+
+객체는 `키/값 쌍`(key-value pair)에 데이터를 저장한다. **배열**은 순서대로 값을 저장하는 객체이다.
+
+```javascript
+const fruitBasket = ['apple', 'banna', 'orange'];
+```
+
+- 이렇게 만들어진 배열의 각 항목의 값에 접근할 때는 **인덱스**(**index**)를 사용하면 된다.
+  - 배열의 인덱스는 `0`부터 시작한다.
+
+```javascript
+const fruitBasket = ['apple', 'banna', 'orange'];
+console.log(fruitBasket[0]);						// apple
+console.log(fruitBasket[1]);						// banna
+console.log(fruitBasket[2]);						// orange
+console.log(fruitBasket[3]);						// undefined
+```
+
+<br>
+
+##### _배열에 대해 호출할 수 있는 메서드_
+
+```javascript
+const fruitBasket = ['apple', 'banna', 'orange'];
+
+// 배열의 길이 확인
+console.log(fruitBasket.length);	// 3
+
+// 배열의 끝에 새 값을 추가
+fruitBasket.push('pear');			// 4
+console.log(fruitBasket);			// (4) ['apple', 'banna', 'orange', 'pear']
+
+// 배열의 시작에 새 값을 추가
+fruitBasket.unshift('melon');		// 5
+console.log(fruitBasket);			// (5) ['melon', 'apple', 'banna', 'orange', 'pear']
+
+// 배열의 끝에서 값 하나를 제거
+fruitBasket.pop();					// 'pear'
+console.log(fruitBasket);			// (4) ['melon', 'apple', 'banna', 'orange']
+
+// 배열의 시작에서 값 하나를 제거
+fruitBasket.shift();				// 'melon'
+console.log(fruitBasket);			// (3) ['apple', 'banna', 'orange']
+```
+
+- 이러한 메서드를 사용하여 배열의 시작 또는 끝에서 원소를 쉽게 추가하고 제거할 수 있다.
+
+<br>
