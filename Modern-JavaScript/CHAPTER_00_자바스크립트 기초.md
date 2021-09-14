@@ -514,3 +514,76 @@ typeof(null);					// 'object'
   - http://2ality.com/2013/10/typeof-null.html
 
 <br>
+
+---
+
+### :page_facing_up: 0.3. 함수
+
+**함수(function)**는 온갖 계산과 작업을 수행하는 데 쓰이는 매우 중요한 도구이다.  자바스크립트에서 함수 선언하는 방법은 몇 가지가 있다.
+
+##### _1) 기본적인 함수정의 (function definition)_
+
+```javascript
+function greet(name){
+    console.log("hello " + name);
+}
+
+let myName = 'OHTAEKWON';
+greet(myName);					// hello OHTAEKWON
+```
+
+호출될 때 문자열을 로그로 기록하는 간단한 함수이다. 
+
+- 첫 행의 괄호 안의 변수는 **매개변수(parameter)** 이며
+- 중괄호 안의 코든는 **명령문(statement)** 이다.
+
+여기에서 중요한 것은 `원시 자료형`이 함수에 전달될 때는 참조가 아니라 `값의 형태`로 전달된다. 이는 해당 값에 대한 변경 사항이 전역적으로 반영되지 않음을 의미한다. 
+
+반면, 원시자료형이 아닌 객체나 배열을 함수에 전달할 때는 `참조`로 전달된다. 즉, 해당 값에 대한 수정 사항이 원래의 객체에 반연된다.
+
+```javascript
+let myInt = 1;
+
+function increase(value){
+    return value += 1;
+}
+
+console.log(myInt);							// 1
+console.log(increase(myInt));				// 2
+console.log(myInt)							// 1
+```
+
+- 정수의 값을 증가시켰지만, 원래 변수에는 영향을 주지 않았다.
+
+<br>
+
+```javascript
+let myCar = {
+    maker : "bmw",
+    color : "red",
+};
+
+console.log(myCar);				// {maker: 'bmw', color: 'red'}
+
+function changeColor(car){
+    car.color = "blue";
+}
+
+changeColor(myCar);				// {maker: 'bmw', color: 'blue'}
+```
+
+- 매개변수 `car`는 객체 `myCar`에 대한 참조에 불과하므로, 이를 수정하면 `myCar` 객체도 변경된다.
+
+<br>
+
+##### _2) 함수 표현식(function expressiont) 을 사용하는 방법_
+
+```javascript
+const greeter = function greet(name){
+    console.log("hello " + name);
+};
+
+greeter("OHTAEKOWN");				// hello OHTAEKOWN
+```
+
+
