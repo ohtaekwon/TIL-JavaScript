@@ -479,3 +479,38 @@ console.log(fruitBasket);			// (3) ['apple', 'banna', 'orange']
 - 이러한 메서드를 사용하여 배열의 시작 또는 끝에서 원소를 쉽게 추가하고 제거할 수 있다.
 
 <br>
+
+#### _typeof 를 사용해서 자료형 확인하기_
+
+`typeof`를 사용해서 변수가 어떤 값을 담았는지 확인할 수 있다.
+
+```javascript
+// 1. 문자열
+const str = "hello";
+typeof(str);					// 'string'
+
+// 2. 숫자
+const num = 12;
+typeof(num);					// 'number'
+
+// 3. 배열
+const arr = [1,2,3];
+typeof(arr);					// 'object'
+
+4. 객체
+const obj = {prop : 'value'};
+typeof(obj);					// 'object'
+```
+
+- `3.` 에서 **배열**은 원시 자료형이 아니라 **객체**이다.
+
+<br>
+
+```javascript
+typeof(null);					// 'object'
+```
+
+- **null**은 원시 자료형이다. 하지만 `typeof`를 했을 때 **object**라는 결과물이 나오는데, 이것은 자바스크립트의 첫 번째 구현에서 발생한 버그이다.
+  - http://2ality.com/2013/10/typeof-null.html
+
+<br>
