@@ -136,7 +136,7 @@ let userID = 12;		// 구체적으로!! USER의 ID
 
 ### :page_facing_up: 0.2. 자료형
 
-###  0.1.1. 자료형
+###  0.2.1. 자료형
 
 자바스크립트는 **동적 언어**(**dynamic language**) 이다. 즉, 정적언어와 다릴 **변수를 정의할 때 자료형을 정의할 필요가 없다.**
 
@@ -157,7 +157,7 @@ console.log(typeof userID);		// string
 
 <br>
 
-###  0.1.2. 원시 자료형
+###  0.2.2. 원시 자료형
 
 **원시 자료형**(primitive)은 객체가 아닌 자료형으로, 메서드를 가지지 않는다. 다음과 같이 자료형이 원시 자료형에 해당한다.
 
@@ -215,9 +215,7 @@ _**각 자료형의 사용**_
 
 <br>
 
-###  0.1.3 객체
-
-
+###  0.2.3 객체
 
 6개의 원시 자료형은 **null** 값이든, **true**든, **false**든 하나의 값만 담을 수 있지만, **객체(object)**는 **여러 속성의 모음을 저장**하는데 사용할 수 있다.
 
@@ -257,7 +255,7 @@ car.drive();								// wroom wroom
 
 <br>
 
-###  0.1.4  빈 객체 생성하기
+###  0.2.4  빈 객체 생성하기
 
 객체를 생성할 때에는 속성을 선언할 필요가 없다.
 
@@ -343,7 +341,7 @@ _**key**는 문자열이 아닌 변수 이름이므로 따옴표 표기를 해�
 
 <br>
 
-###  0.1.5 객체의 복사
+###  0.2.5 객체의 복사
 
 원시 자료형과는 달리 객체를 복사할 떄는 **참조 방식**이 쓰인다.
 
@@ -430,7 +428,7 @@ console.log(secondCar);					// {color: 'red'}
 
 <br>
 
-###  0.1.6  배열
+###  0.2.6  배열
 
 객체는 `키/값 쌍`(key-value pair)에 데이터를 저장한다. **배열**은 순서대로 값을 저장하는 객체이다.
 
@@ -586,4 +584,201 @@ const greeter = function greet(name){
 greeter("OHTAEKOWN");				// hello OHTAEKOWN
 ```
 
+- 여기서 `greeter`라는 `const`에 `greet` 함수를 할당했다.
+  - **함수 표현식**을 사용하여 **익명함수**를 만들 수 있다.
 
+```javascript
+const greeter = function(name){
+    console.log("hello " + name);
+}
+
+greeter("OHTAEKWON");		// hello OHTAEKWON
+```
+
+- `greet` 함수에서 함수명인 `greet`를 제거하여 **익명 함수**를 만들었다.
+
+<br>
+
+##### _3) 화살표함수(arrow function)을 사용하는 방법_
+
+`ES6`에서 도입된 **화살표 함수(arrow function)** 를 사용해서 같은 함수를 다른 방법으로 선언할 수 있다.
+
+```javascript
+const greeter = (name) =>{
+    console.log("hello " + name);
+};
+
+greeter("OHTAEKON");			// hello OHTAEKON
+```
+
+- `function` 키워드가 사라지고, 매개변수 뒤에 화살표`=>`가 있다.
+
+<br>
+
+---
+
+### :page_facing_up: 0.4. 함수 스코프와 this 키워드의 이해
+
+<br>
+
+###  0.4.1 스코프
+
+변수의 스코프란 변수에 접근할 수 있는 **위치**를 재어한다. 
+
+- **전역 스코프(global scope)** 를 가지는 변수는 코드의 어느 곳에서나 접근할 수 있다.
+
+- **블록 스코프(block)**는 함수, 루프, 혹은 중괄호`{}`로 구분되는 모든 영역을 의미한다.
+
+<br>
+
+##### _1) var를 사용하는 예_
+
+```javascript
+var myInt = 1;
+
+if(myInt === 1){
+    var mySecondInt = 2;
+    console.log(mySecondInt);
+} // 2
+console.log(mySecondInt);			// 2
+```
+
+- 이와 같이 `var` 키워드로 선언된 변수 `mySecondInt`는 **블록 스코프**를 가지지 않기 때문에 블록 외부에서도 그 값에 접근할 수 있다.
+  - ex. `console.log(mySecondInt)`
+
+<br>
+
+##### _2) let를 사용하는 예_
+
+```javascript
+var myInt = 1;
+
+if(myInt === 1){
+    let mySecondInt = 2;
+    console.log(mySecondInt);
+}  // 2
+
+console.log(mySecondInt);  			// Uncaught ReferenceError: mySecondInt is not defined
+```
+
+- **블록 스코프** 외부에서 변수에 접근할 수 없으며, 접근을 시도하면 오류가 발생한다.
+  - *mySecond is not defined*
+- `let` 또는 `const` 키워드로 선언된 변수는 변수가 선언된 위치에 해당하는 블록 스코프를 가지게 된다.
+
+<br>
+
+###  0.4.2. this 키워드
+
+_**this** 키워드는 스코프 다음으로 중요한 개념_
+
+```javascript
+const myCar = {
+    color : 'red',
+    logColor : function(){
+        console.log(this.color);
+    },
+};
+
+myCar.logColor();				// red
+```
+
+- `this` 키워드가 `myCar` 개체를 참조한다는 것은 자명하다.
+- `this`의 값은 함수가 호출되는 방식에 따라 다르다. 
+  -  위의 예제는 `객체의 메서드`로 호출되었다.
+
+```javascript
+function logThis(){
+    console.log(this);
+}
+
+logThis();
+// Window {0: Window, window: Window, self: Window, document: document, name: '', location: Location, …}
+```
+
+- 이 함수는 **전역 범위**에서 호출했으므로 `this` 값은 `Window` 객체를 참조한다.
+- **스트릭트 모드(strict mode)**로 설정하면 실수로 `Window` 객체를 참조하는 것을 방지할 수 있다.
+- **스트릭트 모드**를 설정하려면 자바스크립트 파일의 시작 부분에 `'use strict';`를 삽입하면 된다.
+  - 그러면 자바스크립트의 보다 **엄격한 규칙**을 적용할 수 있다.
+  - 엄격한 규칙 중에는 전역 객체의 값을 `Window` 객체 대신에 `undefined`로 성정하는 규칙이 있어서, 키워드 범위로 정의된 `this` 키워드의 값도 `undefined`가 된다.
+
+<br>
+
+##### _1) this 값을 수동으로 설정하고자 할 때는 `.bind()`_를 사용할 수 있다.
+
+```javascript
+const myCar = {
+    color : 'red',
+    logColor : function(){
+        console.log(this.color);
+    },
+};
+
+const unboundGetColor = myCar.logColor;					// undefined
+console.log(unboundGetColor());							// undefined
+
+const boundGetColor = unboundGetColor.bind(myCar);		// undefined
+console.log(boundGetColor());							// red
+```
+
+- `1. 먼저,` 이전 예제와 유사한 객체를 생성
+- `unboundGetCOlor`를 `myCar`의 `logColor`메서드와 동일하게 설정 
+
+- `unboundGetColor`를 호출하면 `this.color`를 찾으려고 하지만 전역 범위의 `this`가 호출되기 때문에 그 값은 `Window` 객체가 되고, 이 객체에는 `color`가 없으므로 결과는 `undefined`가 된다.
+- `.bind()`를 사용하여 `boundGetColor`의 `this` 키워드가 **괄호 안의 객체**, 즉 `myCar`를 **참조**함을 알린다.
+- `myCar`의 `myCar.logColor` 속성 값을 얻을 수 있다. 
+
+<br>
+
+`this` 키워드의 값을 설정하는 데 사용할 수 있는 다른 방법으로는 `.call()`과 `.apply()` 두 가지 방법이 있다. 두 메서드는 모두 주어진 `this`의 값으로 함수를 호출한다는 점에서 비슷하지만, 받아들이는 인수가 다르다. 
+
+- `.call()`은 **인수의 목록**을 받는다.
+- `.apply()` 는 **하나의 인수 배열**을 받는다.
+
+<br>
+
+##### _2) `.call()` 을 사용한 예_
+
+```javascript
+function Car(maker, color){
+    this.carMaker = maker;
+    this.carColor = color;
+}
+
+function MyCar(maker, color){
+    Car.call(this, maker, color);
+    this.age = 5;
+}
+
+const myNewCar = new MyCar('bmw','red');
+
+console.log(myNewCar); // MyCar {carMaker: 'bmw', carColor: 'red', age: 5}
+
+console.log(myNewCar.carMaker);			// bmw
+	
+console.log(myNewCar.carColor);			// red
+```
+
+- `.call()`에 `MyCar` 객체를 전달하여 `this.carMaker`가 `MyCar`의 인수로 전달한 `maker`로 설정되도록 하였다.
+- `color`도 마찬가지로 처리
+
+<br>
+
+##### _3) `.apply()` 을 사용한 예_
+
+`.apply()`는 인수목록이 담긴 **배열**을 받는다.
+
+함수에 필요한 인수의 수를 모르거나 알 필요가 없을 때에는 `.apply()`를 주로 사용한다.
+
+- 이런 경우 `.call()`은 인수를 개별적으로 전달해야 하므로 사용할 수 없다.
+- `.apply()`는 배열을 전달할 수 있고, 배열에 포함된 원소의 수에 관계 없이 **함수 내부**로 전달할 수 있다.
+
+```javascript
+const ourFunction = function(item, method, args){
+    method.apply(args);
+};
+
+ourFunction(item, method, ['argument1', 'argument2']);
+ourFunction(item, method, ['argument1', 'argument2', 'argument3']);
+```
+
+전달하는 인수의 수에 관계 없이 `.apply()`가 호출될 때 개별적으로 각 인수가 적용된다.
