@@ -132,3 +132,34 @@ console.log(person.age);		// 28
 <br>
 
 <br>
+
+### :page_facing_up: 1.2. TDZ
+
+---
+
+**TDZ** 란 **일시적 비활성 구역, Temporal dead zone**을 의미한다. 
+
+```
+console.log(i);
+var i = "I am a variable";			// undefined
+
+console.log(i);						// I am a variable
+
+console.log(j);
+let j = "I am a let";				// Uncaught ReferenceError: j is not defined
+
+```
+
+**var** 는 **정의되기 전에** 접근할 수 있지만, 그 **값**에는 접근할 수 없다. **let**과 **const**는 **정의되기 전에 접근할 수 없다.**
+
+var, let, const 모두 다른 소스에서 읽을 수 있는 내용임에도 불구하고 **호이스팅(Hoisting)**의 대상이 된다. 즉, 코드가 실행되기 전에 처리되고 해당 스코프(글로벌 or 블록) 상단으로 올라간다.
+
+- **var**가 가지는 가장 큰 **차이점**은 **정의되기 전에도 접근할 수 있다는 점**이다. 
+  - 즉, 정의되기 전에 **undefined** 값을 가지게 된다. 
+- 반면, **let**은 변수가 선언될 때까지 **일시적으로 비활성 구역**, 즉, **TDZ**에 있게 된다. 
+  - 따라서 초기화 전에 변수에 접근하면 오류가 발생한다.
+  - **undefined** 값을 얻는 것보다 오류가 발생하는 편이 코드 디버깅이 더 쉽다.
+
+<br>
+
+<br>
