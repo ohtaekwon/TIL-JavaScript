@@ -55,7 +55,7 @@ var greeting = () => {
 <br>
 
 <br>
-### :page_facing_up: 2.2. 암시적 반환
+###:page_facing_up: 2.2. 암시적 반환
 
 ---
 
