@@ -160,3 +160,197 @@ result; // [2, 3, 4]
 ```
 
 <br>
+
+<br>
+
+### :page_facing_up: 2.3. 화살표 함수는 익명 함수
+
+---
+
+화살표 함수는 익명 함수이다. 참조할 이름이 필요하다면 함수를 변수에 할당하면 된다.
+
+```javascript
+const greeting = name => `hello ${name}`;
+greeting("TAEKWON");		// 'hello TAEKWON'
+```
+
+<br>
+
+<br>
+
+### :page_facing_up: 2.4. 화살표 함수와 this 키워드
+
+---
+
+화살표 함수 내부에서 `this` 키워드를 사용할 때는 **일반 함수와 다르게 동작**하므로 주의해야한다.
+
+***화살표 함수를 사용할 때 `this` 키워드는 상위 스코프에서 상속된다.***
+
+##### 1) HTML
+
+```html
+<div class = "box open">
+    This is a box
+</div>
+```
+
+##### 2) CSS
+
+```css
+.opening{
+    background-color : red;
+}
+```
+
+##### 3) JS
+
+```javascript
+// box 클래스를 가진 div를 가져온다.
+const box = document.querySelector(".box");
+
+// click 이벤트 핸들러를 등록
+box.addEventListener("click", function(){
+    // div에 opening 클래스를 토글
+    this.classList.toggle("opening");
+    
+    setTimeout(function(){
+        // 클래스를 다시 토글
+        this.classList.toggle("opening");
+    }, 500);   
+});
+```
+
+이 코드의 문제는, 첫 번째 `this`가 **const box** 에 할당되었지만, 
+
+**setTimeout** 내부의 두 번째 `this`는 **Window**객체로 설정되어 오류가 발생한다.
+
+<br>
+
+화살표 함수가 **부모 스코프**에서 `this`의 값을 상속한다는 것을 인지하면 다음과 같이 함수를 다시 작성할 수 있다.
+
+```javascript
+const box = document.querySelector(".box");
+// click 이벤트 핸들러 등록
+box.addEventListener("click", function(){
+    // div에 opening 클래스를 토글
+    this.classList.toggle("opening");
+    
+    setTimeout(()=>{
+        // 클래스를 다시 토글
+        this.classList.toggle("openong");
+    }, 500);
+});
+```
+
+여기서 두 번째 `this`는 부모로부터 상속되며 `const box`로 설정된다.
+
+<br>
+
+<br>
+
+### :page_facing_up: 2.5. 화살표 함수를 피해야 하는 경우
+
+---
+
+#### _ex) 화살표 함수에서 this를 주의해서 사용해야 하는 경우_
+
+```javascript
+const button = document.querySelector("btn");
+button.addEventListenner("click", ()=>{
+    // 오류 : 여기서 this는 Window 객체를 가리킴
+    this.classList.toggle("on");
+});
+```
+
+<br>
+
+#### _ex) 화살표 함수와 일반 함수의 차이_
+
+```javascript
+const person1 = {
+    age:10,
+    grow: function(){
+        this.age++;
+        console.log(this.age);
+    },
+};
+
+person1.grow(); // 11
+console.log(person1); // {age: 11, grow: ƒ}
+
+const person2 = {
+    age : 10,
+    grow : () => {
+        // 오류 : 여기서 this는 Window 객체를 가리킨다. 
+        this.age++;
+        console.log(this.age);
+    },
+};
+
+person2.grow();		// NaN
+```
+
+이처럼 화살표 함수에서 `this`를 사용시에 주의를 해야한다.
+
+<br>
+
+그리고 화살표 함수와 일반 함수의 또 다른 차이점이 있다.
+
+- **arguments** 객체에 대한 접근 방식이다. 
+
+**arguments** 객체는 함수 내부에서 접근할 수 있는 **배열 객체**이며, 해당 함수에 전달된 인수의 값을 담고 있다.
+
+```javascript
+function example(){
+    console.log(arguments[0])
+}
+
+example(1,2,3);		// 1
+```
+
+이와 같이 배열 표기법 **arguments[0]**을 사용하면 **첫 번째 인수에 접근**할 수 있다. 
+
+`this` 키워드와 비슷하게, 화살표 함수에서 **arguments**객체는 **부모 스코프의 값을 상속**한다. 
+
+```javascript
+const showWinner = () => {
+    const winner = arguments[0];
+    console.log(`${winner} was the winner`);
+};
+
+showWinner("BTS", "IU", "Black Pink", "Iron Man", "Hulk");
+
+// Uncaught ReferenceError: arguments is not defined
+```
+
+함수에 전달된 모든 인수에 접근하려면, 기존 함수 표기법이나 스프레드 문법을 사용한다. 
+
+<br>
+
+#### 화살표 함수와 일반 함수의 arguments 에 접근
+
+#### _1) 화살표 함수로 arguments에 접근하기_
+
+```javascript
+const showWinner = (...args) => {
+    const winner = args[0];
+    console.log(`${winner} was the winner`);
+};
+
+showWinner("BTS", "IU", "Black Pink", "Iron Man", "Hulk"); 	// BTS was the winner
+```
+
+<br>
+
+#### _2) 일반 함수로 arguments에 접근하기_
+
+```javascript
+const showWinner = function(){
+    const winner = arguments[0];
+    console.log(`${winner} was the winner`);
+};
+
+showWinner("BTS", "IU", "Black Pink", "Iron Man", "Hulk"); 	// BTS was the winner
+```
+
+
