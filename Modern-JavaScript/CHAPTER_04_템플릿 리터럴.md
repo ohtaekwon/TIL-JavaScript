@@ -134,3 +134,9 @@ console.log(markup);
 <br>
 
 <br>
+
+### :page_facing_up: 4.5. 삼항 연산자 추가하기
+
+---
+
+**삼항 연산자** (**ternary operator**)를 사용하면 템플릿 문자열 내에 로직을 쉽게 추가할 수 있다.
