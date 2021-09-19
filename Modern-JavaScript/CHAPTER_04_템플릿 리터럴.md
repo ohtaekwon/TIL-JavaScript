@@ -59,3 +59,39 @@ console.log(`1 * 10 is ${a * b}`);
 <br>
 
 <br>
+
+### :page_facing_up: 4.3. 여러 줄 문자열 생성
+
+---
+
+`ES5`에서 `HTML` 프래그먼트 등에 사용할 여러 줄로 이뤄진 문자열을 다음과 같이 구현했다.
+
+```javascript
+// 각 행마다 백슬래시를 삽입해야 함
+var text = "hello, \
+my name is OHTAEKOWN \
+how are you? \";
+```
+
+<br>
+
+`ES6`에서는 전체를 **백틱**으로 감싸기만 하면 된다. 
+
+- 더이상 백슬래시를 쓰지 않아도 됨
+
+```javascript
+const content = `hello, 
+my name is OHTAEKWON
+how are you? `;
+
+console.log(content);
+/*
+hello, 
+my name is OHTAEKWON
+how are you? 
+*/
+```
+
+<br>
+
+<br>
