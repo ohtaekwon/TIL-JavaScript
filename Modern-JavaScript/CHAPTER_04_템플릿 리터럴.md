@@ -95,3 +95,42 @@ how are you?
 <br>
 
 <br>
+
+### :page_facing_up: 4.4. 중첩 템플릿
+
+---
+
+템플릿 안에 테플릿을 중첩
+
+```javascript
+const people = [{
+    name : 'OHTAEKWON',
+    age : 30,
+},{
+    name : 'BTS',
+    age : 28,
+},{
+    name : 'Black Pink',
+    age : 27,
+}];
+
+const markup = `
+<ul>
+	${people.map(person => `<li> ${person.name}</li>`)}
+</ul>
+`;
+
+console.log(markup);
+
+/*
+<ul>
+	<li> OHTAEKWON</li>,<li> BTS</li>,<li> Black Pink</li>
+</ul>
+*/
+```
+
+여기서는 **map** 함수를 사용하여 `people`의 각 원소에 대해 반복 동작을 수행하고 `people` 내에 있는 `name`을 담아 `li` 태그를 표시했다.
+
+<br>
+
+<br>
