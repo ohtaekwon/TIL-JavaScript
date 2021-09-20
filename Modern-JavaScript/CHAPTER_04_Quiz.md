@@ -39,7 +39,6 @@ let e = "TK";
 
 // 예상 결과를 얻기 위해 다음 코드를 수정해보시오.
 let result = `${a}, ${c} ${d} ${b} ${e}`;
-
 console.log(result); // Hello, my name is TK
 ```
 
@@ -77,10 +76,9 @@ let d = "3";
 let e = "equals";
 
 // 다음 코드에 템플릿 리터럴을 사용해보시오. 
-let result = a + " " + c + " " + b + " " + e + " " + d;
+let result = `${a} + ${c} + ${b} + ${e} + ${d}`;
 
-console.log(result);
-// 1 plus 2 equals 3
+console.log(result);	// 1 + plus + 2 + equals + 3
 ```
 
 <br>
@@ -106,7 +104,14 @@ console.log(str);
 #### 풀이
 
 ```javascript
+// 다음 코드에 템플릿 리터럴을 사용해보자.
+let str = `this is a very long text
+a very long text`;
 
+console.log(str);
+/*
+this is a very long text
+a very long text
+*/
 ```
-
 
