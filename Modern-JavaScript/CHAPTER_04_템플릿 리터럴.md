@@ -206,7 +206,7 @@ console.log(text);
 
 필요하면 템플릿 리터럴 내에 함수를 전달할 수도 있다.
 
-- ``${groceryList(groceries.others)}` 부분
+- `${groceryList(groceries.others)}` 부분
 
 ```javascript
 const groceries = {
@@ -257,3 +257,46 @@ console.log(markup);
 - 다음으로, `.join('\n')`을 사용하여 각 `<span>` 뒤에 새 행을 추가한다.
 
 <br>
+
+<br>
+
+### :page_facing_up: 4.7. 태그된 템플릿 리터럴
+
+---
+
+함수를 **태그**(tag)하여 템플릿 리터럴을 실행하면 템플릿 내부에 있는 모든 항목이 태그된 함수의 인수로 제공된다.
+
+- 작동 방식
+  - 함수 이름을 가져다 실행할 템플릿 앞에 쓰면 된다.
+
+```javascript
+let person = "OHTAEKOWN";
+let age = 25;
+
+function myTag(strings, personName, personAge){
+    // strings : ["That ", " is a ", "!"]
+    let str = strings[1];	// " is a"
+    let ageStr;
+    
+    personAge > 50 ? ageStr = "grandpa" : ageStr = "youngster";
+    
+    return personName + str + ageStr;
+}
+
+let sentence = myTag`That ${person} is a ${age}!`;
+console.log(sentence);		// OHTAEKWON is a youngster
+```
+
+이 코드의 함수는 `age` 변수의 값을 받아서 **삼항 연산자**를 사용하여 출력할 할목을 결정한다.
+함수에서 첫 번째 인수 `strings`는 `let sentence`문의 전체 문자열 중 템플릿 리터럴 변수를 제외한 문자열들이 담긴 배열로 설정되고, 템플릿 리터럴 변수들이 나머지 인수가 된다.
+
+`strings` 배열의 각 원소는 템플릿 리터럴에 포함된 변수들을 구분자로 삼아 문자열을 나눈 결과와 같다.
+이 예에서 문자열은 `That, ${person}, is a , ${age}, !` 다섯 부분으로 나뉘므로 여기서 변수를 제외한 `["That ", " is a ", "!"]`가 **strings**가 된다.
+
+배열 표기법을 사용하여 다음과 같이 중간에 있는 문자열에 접근할 수 있다. 
+
+```javascript
+let str = strings[1];	// is a
+```
+
+
