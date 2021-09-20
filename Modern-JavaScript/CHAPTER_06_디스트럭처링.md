@@ -125,3 +125,23 @@ console.log(food);  // (3) ['Pizza', 'ice cream', 'cheese cake']
 이 예에서 배열의 처음 두 값은 **name**과 **surname**에 할당되고 **나머지(rest)**는 **food** 배열에 할당된다. 
 
 `...`는 **레스트 연산자**를 의미한다.
+
+<br>
+
+<br>
+
+### :page_facing_up: 6.3. 디스트럭처링을 이용하여 변수 교체하기
+
+----
+
+디스트럭처링 할당을 사용하면 변수의 값을 쉽게 서로 **교체(swap)**할 수 있다.
+
+```javascript
+let hungry = "yes";
+let full = "no";
+// 식후에는 배고프지(hungry) 않고 배부름(full) 것이다. 값을 교체하자.
+
+[hungry, full] = [full, hungry];	// (2) ['no', 'yes']
+console.log(hungry, full);			// no yes
+```
+
