@@ -199,3 +199,61 @@ console.log(text);
 <br>
 
 <br>
+
+### :page_facing_up: 4.6. 템플릿 리터럴에 함수 전달하기
+
+---
+
+필요하면 템플릿 리터럴 내에 함수를 전달할 수도 있다.
+
+- ``${groceryList(groceries.others)}` 부분
+
+```javascript
+const groceries = {
+    meat : "pork chop",
+    veggie : "salad",
+    fruit : "apple",
+    others : ['mushrooms', 'instant noodles', 'instant soup'],
+};
+
+// groceries 의 각 값에 대해 map()을 수행하는 함수
+function groceryList(others){
+    return `
+		<p>
+		  ${others.map(other => `<span> ${other}</span>`).join('\n')}
+		</p>
+	`;
+}
+
+// p 태그 내 모든 groceries 를 출력. 마지막은 **others** 배열의 모든 원소를 포함
+const markup = `
+    <div>
+        <p>${groceries.meat}</p>
+    	<p>${groceries.veggie}</P>
+		<p>${groceries.fruit}</P>
+    	<p>${groceryList(groceries.others)}</p>
+    </div>
+`;
+
+console.log(markup);
+/*
+    <div>
+        <p>pork chop</p>
+    	<p>salad</P>
+		<p>apple</P>
+    	<p>
+		<p>
+		  <span> mushrooms</span>
+		  <span> instant noodles</span>
+		  <span> instant soup</span>
+		</p>
+	</p>
+    </div>
+*/
+```
+
+- 마지막 `p`태그에서 함수 `groceryList`를 호출하여 다른 모든 `others`를 인수로 전달했다.
+- 함수 내에서 `p`태그를 반환하고 `map`을 사용하여 `groceries`의 각 원소에 대해 반복하여 각 원소를 담은 `<span>` 태그 배열을 반환한다.
+- 다음으로, `.join('\n')`을 사용하여 각 `<span>` 뒤에 새 행을 추가한다.
+
+<br>
