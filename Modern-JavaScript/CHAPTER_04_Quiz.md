@@ -31,8 +31,16 @@ console.log(result);
 #### 풀이
 
 ```javascript
-var b = 3;	// global scope
+let a = "Hello";
+let b = "is";
+let c = "my";
+let d = "name";
+let e = "TK";
 
+// 예상 결과를 얻기 위해 다음 코드를 수정해보시오.
+let result = `${a}, ${c} ${d} ${b} ${e}`;
+
+console.log(result); // Hello, my name is TK
 ```
 
 <br>
@@ -47,7 +55,7 @@ var b = 3;	// global scope
 let a = "1";
 let b = "2";
 let c = "plus";
-let d = "3"l
+let d = "3";
 let e = "equals";
 
 // 다음 코드에 템플릿 리터럴을 사용해보시오. 
@@ -62,7 +70,17 @@ console.log(result);
 #### 풀이
 
 ```javascript
+let a = "1";
+let b = "2";
+let c = "plus";
+let d = "3";
+let e = "equals";
 
+// 다음 코드에 템플릿 리터럴을 사용해보시오. 
+let result = a + " " + c + " " + b + " " + e + " " + d;
+
+console.log(result);
+// 1 plus 2 equals 3
 ```
 
 <br>
@@ -90,4 +108,5 @@ console.log(str);
 ```javascript
 
 ```
+
 
