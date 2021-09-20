@@ -83,3 +83,45 @@ const {github : gh = "https://github.com/ohtaekwon"} = person.links.social;
 <br>
 
 <br>
+
+### :page_facing_up: 6.2. 배열 디스트럭처링
+
+---
+
+배열을 디스트럭처링할 때는 객체의 디스트럭처링과는 달리 `{}`가 아닌 `[]`를 사용한다.
+
+```javascript
+const person = ['TAEKWON', 'OH', 30];
+const [name, surname, age] = person;
+```
+
+<br>
+
+생성하려는 변수의 수가 배열의 원소보다 적다면?
+
+```javascript
+const person = ['TAEKWON', 'OH', 30];
+// age(30)는 필요하지 않으므로 뺀다.
+
+const [name, surname] = person;
+// 30은 어떤 변수에도 할당되지 않는다.
+
+console.log(name, surname);		// TAEKWON OH
+```
+
+<br>
+
+나머지 모든 값을 얻고 싶다면 **레스트 연산자**(rest operator)를 사용하면 된다.
+
+```javascript
+const person = ["TAEKWON", "OH", "Pizza", "ice cream", "cheese cake"];
+
+// 레스트 연산자를 사용하여 나머지 값 전체를 얻는다.
+const [name, surname, ...food] = person;
+
+console.log(food);  // (3) ['Pizza', 'ice cream', 'cheese cake']
+```
+
+이 예에서 배열의 처음 두 값은 **name**과 **surname**에 할당되고 **나머지(rest)**는 **food** 배열에 할당된다. 
+
+`...`는 **레스트 연산자**를 의미한다.
