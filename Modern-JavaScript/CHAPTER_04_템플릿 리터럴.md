@@ -140,3 +140,62 @@ console.log(markup);
 ---
 
 **삼항 연산자** (**ternary operator**)를 사용하면 템플릿 문자열 내에 로직을 쉽게 추가할 수 있다.
+
+```javascript
+const isDiscounted = false;
+
+function getPrice(){
+    console.log(isDiscounted ? "$10" : "$20");
+}
+
+getPrice();		// $20
+```
+
+- `?` 앞의 조건이 **true**이면 첫 번째 값이 반환되고, 그렇지 않으면 `:` 뒤에 있는 값이 반환된다.
+
+<br>
+
+```javascript
+// name, age와 함께 artist를 생성
+
+const artist = {
+    name : "BTS",
+    age : 28,
+};
+
+// artist 객체에 song프로퍼티가 있을 때만 문장에 추가하고,
+// 없으면 아무것도 반환하지 않음
+
+const text = `
+	<div>
+		<p> ${artist.name} is ${artist.age} years old ${artist.song ? `and wrote the song ${artist.song}` : ''}
+		</p>
+	</div>
+`;
+console.log(text);
+/*
+	<div>
+		<p> BTS is 28 years old 
+		</p>
+	</div>
+*/
+
+const artist = {
+    name : "Black Pink",
+    age : 25,
+    song : 'Butter',
+};
+
+console.log(text);
+
+/*
+	<div>
+		<p> Black Pink is 25 years old and wrote the song Butter
+		</p>
+	</div>
+*/
+```
+
+<br>
+
+<br>
