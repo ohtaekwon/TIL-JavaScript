@@ -98,3 +98,33 @@ Array(1,2,3);		// [1, 2, 3]
 <br>
 
 <br>
+
+### :page_facing_up: 8.3. Array.find()
+
+---
+
+`Array.find()`는 제공된 테스트 함수를 충족하는 배열의 **첫 번째 원소**를 반환한다. 충족하는 원소가 없으면 `undefined`를 반환한다.
+
+```javascript
+const array = [1,2,3,4,5];
+
+// 배열의 원소 중 3보다 큰 첫 원소를 반환한다.
+let found = array.find(e => e>3);
+console.log(found);			// 4
+```
+
+- `조건( > 3)` 과 일치하는 **첫 번째** 원소를 반환하므로 `5`가 아닌 `4`가 반환된다.
+
+<br>
+
+```javascript
+const array1 = [5, 12, 8, 130, 44];
+
+const found = array1.find(element => element > 10);
+
+console.log(found); // expected output: 12
+```
+
+<br>
+
+<br>
