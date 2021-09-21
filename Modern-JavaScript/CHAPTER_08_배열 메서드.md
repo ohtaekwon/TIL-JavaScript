@@ -128,3 +128,25 @@ console.log(found); // expected output: 12
 <br>
 
 <br>
+
+### :page_facing_up: 8.4. Array.findIndex()
+
+---
+
+`Array.findIndex()`조건과 일치하는 **첫 번째** 원소의 인덱스를 반환한다.
+
+```javascript
+const greetings = ["hello", "hi", "MUYAHO", "byebye", "goodbye", "hi"];
+
+let foundIndex = greetings.findIndex(element => element === "hi");
+console.log(foundIndex);	// 1
+
+let findMuyaho = greetings.findIndex(element => element === "MUYAHO");
+console.log(findMuyaho); // 2
+```
+
+- 즉, 조건과 일치하는 **첫 번째** 원소의 인덱스만 반환한다.
+
+<br>
+
+<br>
