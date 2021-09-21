@@ -70,3 +70,31 @@ console.log(fruitArray);	// ['Apple', 'Banna', 'Orange']
 <br>
 
 <br>
+
+### :page_facing_up: 8.2. Array.of()
+
+---
+
+`Array.of()` 는 전달받은 모든 인수로 배열을 생성한다.
+
+```javascript
+const digits = Array.of(1,2,3,4,5);
+
+console.log(digits);		// [1, 2, 3, 4, 5]
+```
+
+`Array.of()` 메서드는 인자의 수나 유형에 관계없이 가변 인자를 갖는 새 `Array` 인스턴스를 만듭니다.
+
+`Array.of()`와 `Array` 생성자의 차이는 정수형 인자의 처리 방법에 있습니다. `Array.of(7)`은 하나의 요소 `7`을 가진 배열을 생성하지만 `Array(7)`은 `length` 속성이 7인 빈 배열을 생성한다.
+
+```javascript
+Array.of(7);		// [7]
+Array.of(1,2,3,4);	// [1,2,3,4]
+
+Array(7);			// [ , , , , , ,] [비어 있음 × 7]
+Array(1,2,3);		// [1, 2, 3]
+```
+
+<br>
+
+<br>
