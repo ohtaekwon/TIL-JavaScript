@@ -150,3 +150,26 @@ console.log(findMuyaho); // 2
 <br>
 
 <br>
+
+### :page_facing_up: 8.5. Array.some() 과 Array.every()
+
+---
+
+이 두 메서드는 이름 그대로의 역할을 하므로 함께 설명한다. 
+
+- `.some()`은 **조건과 일치하는 원소**가 있는지 검색하고 첫 번째 일치하는 원소를 찾으면 바로 중지한다.
+- `.every()`는 **모든 원소**가 주어진 조건과 일치하는지 여부를 확인한다.
+
+```javascript
+const array = [1,2,3,4,5,6,1,2,3,1];
+
+let arraySome = array.some(e=>e>2);
+console.log(arraysome);			// true
+
+let arrayEvery = array.every(e=>e>2);
+console.log(arrayEvery);		// false
+```
+
+즉, 2보다 큰 원소가 **일부** 있기 때문에 첫 번째 조건은 참이지만 **모든** 원소가 2보다 크지는 않기 때문에 두 번째 조건은 거짓이다.
+
+
