@@ -104,3 +104,29 @@ for (const prop in car){
 
 <br>
 
+### :page_facing_up: 7.3. for of 와 for in의 차이
+
+---
+
+##### _두 문법의 차이_
+
+```javascript
+let list = [4,5,6];
+
+// for...in 은 키의 목록을 반환한다.
+
+for(let i in list){
+    console.log(i); 	// "0", "1", "2"
+}
+
+// for...of 는 값을 반환한다.
+for(let i of list){
+    console.log(i);		// 4, 5, 6
+}
+```
+
+- `for in`은 **배열의 속성 목록**을 반환한다.
+- `for of`는 **배열의 원소 목록**을 반환한다.
+
+
+
