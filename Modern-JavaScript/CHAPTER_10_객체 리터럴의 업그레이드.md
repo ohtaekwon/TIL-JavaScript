@@ -106,3 +106,34 @@ person2.greet();	// Hello
 <br>
 
 <br>
+
+### :page_facing_up: 10.3. 객체의 속성을 동적으로 정의하기
+
+---
+
+`ES5`에서 객체의 속성을 동적으로 정의하는 방법
+
+```javascript
+var name = "myname";
+
+// 빈 객체를 생성한다.
+var person = {};
+
+// 객체를 업데이트 한다.
+person[name] = "TAEKWON";
+console.log(person.myname);		// TAEKWON
+console.log(person);			// {myname: 'TAEKWON'}
+```
+
+이렇게 먼저 객체를 생성한 다음 수정해야 했다. 그러나 `ES6`에서는 두 가지를 동시에 할 수 있다.
+
+```javascript
+const name = "myname";
+const person = {
+    [name] : "TAEKWON",
+};
+console.log(person.myname);	// TAEKWON
+console.log(person);  		// {myname: 'TAEKWON'}
+```
+
+
