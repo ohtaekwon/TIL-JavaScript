@@ -198,3 +198,20 @@ console.log(clone);	// {name: 'TAEKWON', surname: 'OH', age: 30}
 <br>
 
 <br>
+
+### :page_facing_up: 9.2. 레스트 매개변수
+
+----
+
+**레스트(rest)** 문법은 점 3개로 이뤄졌다는 점에서 스프레드 문법과 똑같지만 기능적으로 그 반대이다. `스프레드`는 배열을 **'확장'** 하는 반면, `레스트`는 여러 원소를 하나의 원소로 **'압축'**한다.
+
+```javascript
+const runners = ["Tom", "Paul", "Mark", "Luke"];
+const [first, second, ...losers] = runners;
+
+console.log(...losers);		// Mark Luke
+console.log(first);			// Tom
+console.log(second);		// Paul
+```
+
+처음 두 값은 **first**와 **second** 변수에 저장하고, 나머지 원소는 `레스트`연산자를 사용하여 **losers** 변수에 배열로 담았다. 마지막에는 이 배열을 스프레드 연산자로 풀어서 `console.log()`로 넘겼다.
