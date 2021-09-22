@@ -76,3 +76,125 @@ console.log(newVeggie);	// (3) ['tomato', 'cucumber', 'beans']
 ```
 
 스프레드 연산자의 문법은 `...YourArray`이런 식으로 접근한다. 
+
+위의 예시에서 변수 `newVeggie`를 배열 `veggie`의 복사본으로 만들기 위해, 우선 `newVeggie`에 배열을 할다앟고 그 내부에 **스프레드 연산자**를 통해 `veggie` 변수의 모든 원소를 넣었다.
+
+<br>
+
+### 9.1.3. 함수와 스프레드 연산자
+
+인수들을 원소로 가지는 배열에 스프레드 연산자를 사용하면 함수를 쉽게 호출할 수 있다.
+
+```javascript
+// 기존 방식
+function doStuff(x, y, z){
+    console.log(x+y+z);
+}
+
+var args = [0, 1, 2];
+
+// 함수 호출, 인수 전달
+doStuff.apply(null, args);
+
+// 스프레드 문법 사용
+
+doStuff(...args);	// 3 (0 + 1 + 2);
+console.log(args);	// [0, 1, 2]
+```
+
+이 예제에서 `doStuff`함수는 3개의 매개변수를 받는다. `doStuff`함수를 호출할 때 `args`배열을 `...args`와 같이 써서 스프레드 연산자와 함께 함수에 전달할 수 있다.
+
+- 굳이 `.apply()` 사용에 의존하지 않아도 된다.
+
+<br>
+
+```javascript
+const name = ["TAEKWON" , "OH"];
+
+function greet(first, last){
+    console.log(`Hello ${first} ${last}`);
+}
+
+greet(...name);		// Hello TAEKWON OH
+```
+
+배열의 두 값은 함수의 두 인수에 자동으로 할당된다.
+
+<br>
+
+_지정된 인수보다 더 많은 값을 제공하게 된다면?_
+
+```javascript
+const name = ["TAEKWON", "BTS", "OH"];
+
+function greet(first, last){
+    console.log(`Hello ${first} ${last}`);
+}
+
+greet(...name);		// Hello TAEKWON BTS
+```
+
+이 예에서는 배열 내에 **세 개**의 값을 제공했지만 함수에는 두 개의 인수만으로 있으므로 마지막 인수는 **제외**된다.
+
+<br>
+
+### :diamond_shape_with_a_dot_inside: 참고:diamond_shape_with_a_dot_inside:
+
+#### _Function.prototype.apply()_
+
+`apply()` 메서드는 주어진 `this` 값과 배열 (또는 [유사 배열 객체](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide#working_with_array-like_objects)) 로 제공되는 `arguments` 로 함수를 호한다.
+
+- **참고:** 이 함수의 구문은 거의 `call()` 구문과 유사하다. 근본적인 차이점은 `call()` 은 함수에 전달될 **인수 리스트**를 받는데 비해, `apply()` 는 **인수들의 단일 배열**을 받는다는 점입니다.
+
+```javascript
+const numbers = [5, 6, 2, 3, 7];
+
+const max = Math.max.apply(null, numbers);
+
+console.log(max);
+// expected output: 7
+
+const min = Math.min.apply(null, numbers);
+
+console.log(min);
+// expected output: 2
+```
+
+#### 구문
+
+```javascript
+func.apply(thisArg, [argsArray])
+```
+
+#### 매개변수
+
+- `thisArg`
+  - 옵션. `func` 를 호출하는데 제공될 `this` 의 값. `this` 는 메소드에 의해 실제로 보여지는 값이 아닐 수 있음을 유의한다. 메소드가 [non-strict mode](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode) 코드의 함수일 경우, `null` 과 `undefined`가 전역 객체로 대체되며, 기본 값은 제한됩니다.
+  - 즉, 현재 객체로 사용될 객체
+
+- `argsArray`
+  - 옵션. `func`이 호출되어야 하는 인수를 지정하는 유사 배열 객체, 함수에 제공된 인수가 없을 경우 `null`또는 `undefined`. 
+  - ECMAScript 5 의 시작으로 이러한 인수들은 배열 대신 제네릭 유사 배열 객체로 사용될 수 있습니다.
+  - 함수에 전달될 인수 집합
+
+<br>
+
+### 9.1.4. 객체 리터럴과 스프레드(ES2018)
+
+ `ES2018`에 도입된 객체에 대한 스프레드 연산자
+
+```javascript
+let person = {
+    name : "TAEKWON",
+    surname : "OH",
+    age : 30,
+};
+
+let clone = {...person};
+
+console.log(clone);	// {name: 'TAEKWON', surname: 'OH', age: 30}
+```
+
+<br>
+
+<br>
