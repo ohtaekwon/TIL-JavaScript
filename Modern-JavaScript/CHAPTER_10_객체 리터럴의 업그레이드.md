@@ -49,3 +49,60 @@ console.log(person);
 <br>
 
 <br>
+
+### :page_facing_up: 10.2. 객체에 함수 추가하기
+
+---
+
+`ES5`의 예
+
+```javascript
+const person = {
+    name : "TAEKWON",
+    greet : function(){
+        console.log("Hello");
+    },
+};
+
+person.greet();	// Hello
+```
+
+객체에 함수를 추가하려면 `function`키워드를 사용해야 한다. `ES6`에서는 더욱 편리하게 작성한다.
+
+```javascript
+const person = {
+    name : "TAEKWON",
+    greet(){
+        console.log("Hello");
+    },
+};
+
+person.greet();		// Hello
+```
+
+`function`키워드가 없고, 코드는 더 짧아졌지만 동일한 동작을 수행한다.
+
+<br>
+
+화살표 함수는 익명 함수
+
+```javascript
+// 다음 코드는 작동하지 않는다. 함수에 접근하기 위한 키가 필요하다.
+// 화살표 함수를 사용하기 위해서는 키를 써야한다.
+const person1 = {
+    () => console.log("Hello"),
+};
+// Uncaught SyntaxError: Unexpected token '('
+
+
+// 다음 코드는 작동한다.
+const person2 = {
+    greet : () => console.log("Hello"),
+};
+
+person2.greet();	// Hello
+```
+
+<br>
+
+<br>
