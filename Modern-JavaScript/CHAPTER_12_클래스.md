@@ -132,3 +132,42 @@ Person.info();	// I am a Person class, nice to meet you
 <br>
 
 <br>
+
+### :page_facing_up: 12.3. set와 get
+
+---
+
+**세터(setter)**와 **게터(getter)** 메서드를 사용하여 클래스 내에 값을 설정하거나 가져올 수 있다.
+
+```javascript
+class Person{
+    constructor(name, surname){
+        this.name = name;
+        this.surname = surname;
+        this.nickname = "";
+    }
+    
+    set nicknames(value){
+        this.nickname = value;
+        console.log(this.nickname);
+    }
+    get nicknames(){
+        console.log(`Your nickname is ${this.nickname}`);
+    }
+}
+
+const TAEKWON = new Person("TaeKwon", "OH");
+
+// 세터를 호출
+TAEKWON.nickname = "TK";		// 'TK'
+
+// 게터를 호출
+TK.nickname;					// Your nickname is TK
+```
+
+- `getter 메서드`는 `TAEKWON.nicknames`을 사용해 프로퍼티를 읽으려고 할 때 실행됩니다.
+- `setter 메서드`는 `TAEKWON.nicknames=vlaue`으로 프로퍼티에 값을 할당하려 할 때 실행됩니다.
+
+<br>
+
+<br>
