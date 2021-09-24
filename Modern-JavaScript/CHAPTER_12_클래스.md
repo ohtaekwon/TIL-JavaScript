@@ -137,7 +137,7 @@ Person.info();	// I am a Person class, nice to meet you
 
 ---
 
-**세터(setter)**와 **게터(getter)** 메서드를 사용하여 클래스 내에 값을 설정하거나 가져올 수 있다.
+**세터(setter)** 와 **게터(getter)** 메서드를 사용하여 클래스 내에 값을 설정하거나 가져올 수 있다.
 
 ```javascript
 class Person{
@@ -167,6 +167,101 @@ TK.nickname;					// Your nickname is TK
 
 - `getter 메서드`는 `TAEKWON.nicknames`을 사용해 프로퍼티를 읽으려고 할 때 실행됩니다.
 - `setter 메서드`는 `TAEKWON.nicknames=vlaue`으로 프로퍼티에 값을 할당하려 할 때 실행됩니다.
+
+<br>
+
+<br>
+
+### :page_facing_up: 12.4. 클래스 상속하기
+
+---
+
+기존 클래스로부터 상속된 새로운 클래스를 만들려면 `extends` 키워드를 사용한다.
+
+```javascript
+// 기존 클래스
+class Person{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    greet(){
+        console.log(`Hi, my name is ${this.name} and I'm ${this.age} years old`);
+    }
+}
+
+// 상속을 통해 만든 새 클래스
+class Adult extends Person{
+    constructor(name, age, work){
+        this.name = name;
+        this.age = age;
+        this.work = work;
+    }
+}
+
+const TK = new Adult("TAEKWON", 30, "softWare developer");
+
+// ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+```
+
+`Person`을 상속하는 `Adult` 클래스를 만들었지만 이 코드를 실행하려고 하면 오류가 발생한다.
+
+```
+ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+```
+
+오류 메시지는 새로운 클래스에서 `this`를 사용하기 전에 `super()`를 호출하라는 내용이다. 
+
+- 즉, `Adult`를 만들기에 앞서 `Person`을 만들어야 한다는 것이다. 
+- 생성자 내부에서 `super()`를 호출하면 `Person`이 만들어진다.
+
+```javascript
+class Adult extends Person{
+    constructor(name, age, work){
+        super(name, age);
+        this.work = work;
+    }
+}
+```
+
+여기서 _왜 `super(name, age)` 형태로 호출하였을까?_
+
+- `Adult` 클래스는 `Person`으로 부터 이름과 나이를 상속받기 때문에 `Person`을 다시 선언하고 초기화할 필요가 없다. `super()` 생성자가 하는 일이 바로 그것을 의미한다.
+
+<br>
+
+#### _수정된 코드_
+
+```javascript
+// 기존 클래스
+class Person{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    greet(){
+        console.log(`Hi, my name is ${this.name} and I'm ${this.age} years old`);
+    }
+}
+
+// 상속을 통해 만든 새 클래스
+
+class Adult extends Person{
+    constructor(name, age, work){
+        super(name, age);
+        this.work = work;
+    }
+}
+
+const TK = new Adult("TAEKWON" , 30, "softWare Developer");
+
+console.log(TK.name);	// TAEKWON
+console.log(TK.age);	// 30
+console.log(TK.work);	// softWare Developer
+TK.greet(); 			// Hi, my name is TAEKWON and I'm 30 years old
+```
+
+`Adult` 는 `Person` 클래스의 모든 속성과 메서드를 상속했음을 볼 수 있다.
 
 <br>
 
