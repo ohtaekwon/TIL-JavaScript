@@ -92,3 +92,43 @@ OHTAEKWON.farewell();	// Gooooood bye bro~
 <br>
 
 <br>
+
+### :page_facing_up: 12.2. 정적 메서드
+
+---
+
+앞의 예시에서 추가한 `greet()`와 `farewell()` 메서드는 `Person 클래스`의 모든 인스턴스에서 접근할 수 있다. 
+
+하지만, `Array.of()`처럼 클래스의 인스턴스가 아닌 클래스 자체에서 접근할 수 있는 **정적 메서드**는 다음과 같이 정의한다.
+
+```javascript
+class Person{
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    static info(){
+        console.log("I am a Person class, nice to meet you");
+    }
+}
+
+const TAEKWON = new Person("TAEKWON", 30);
+
+TAEKWON.info(); // TypeError: TAEKWON.info is not a function
+
+Person.info();	// I am a Person class, nice to meet you
+```
+
+- **static** 키워드는 클래스의 정적 메서드를 정의한다. 따라서, 클래스의 인스턴스 없이 호출하며 클래스가 인스턴스화되면 호출할 수 없다.
+
+<br>
+
+# static
+
+**static** 키워드는 클래스의 정적 메서드를 정의한다. 
+
+정적 메서드는 클래스의 인스턴스 없이 호출이 가능하며 클래스가 인스턴스화되면 호출할 수 없다. 정적 메서드는 종종 어플리케이션의 유틸리티 함수를 만드는데 사용된다.
+
+<br>
+
+<br>
