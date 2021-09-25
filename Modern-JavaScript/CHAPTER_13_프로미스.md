@@ -282,3 +282,106 @@ Promise.reject(new Error('fail')).then(function(){
 <br>
 
 <br>
+
+### :page_facing_up: 13.5. Promise.all() 과 Promise.race()
+
+---
+
+`Promise.all()`은 모든 프로미스가 성공할 경우에만 성공하는 하나의 프로미스를 반환한다.
+
+<br>
+
+```javascript
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 500, 'first value');
+});
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 1000, 'second value');
+});
+
+promise1.then(data => {
+    console.log(data);
+});
+// 500ms 후
+// first value
+
+promise2.then(data => {
+    console.log(data);
+});
+// 1000ms 후
+// second value
+```
+
+여기서 각 프로미스는 서로 독립적으로 성공 처리된다. 
+
+<br>
+
+`Promise.all()` 사용
+
+```javascript
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 500, 'frist value');
+});
+const promise2  = new Promise((resolve, reject) => {
+    setTimeout(resolve, 1000, 'second value');
+});
+
+Promise
+	.all([promise1, promise2])
+	.then(data=>{
+    const [promise1data, promise2data] = data;
+    console.log(promise1data, promise2data);
+});
+
+// 1000ms 후
+// frist value second value
+```
+
+1000ms(두 번째 프로미스의 타임 아웃) 후에 첫 번째, 두 번째 프로미스의 결과가 함께 반환한다.
+
+즉, 첫 번째 프로미스가 성공 후에도 두 번째 프로미스가 성공할 때까지 기다렸다가 같이 반환했음을 알 수 있다.
+
+비어있는 이터러블을 전달하면 이미 성공 처리된 프로미스를 반환한다.
+프로미스 중 하나가 실패하면 다른 모든 프로미스가 성공하더라도 해당 실패에서 발생한 오류가 반환된다.
+
+```javascript
+const promise1 = new Promise((resolve, reject)=>{
+    resolve("my first value");
+});
+const promise2 = new Promise((resolve, reject)=>{
+    reject(Error("ooops error"));
+});
+
+// .all()은 두 프로미스 중 하나라도 실패하면 전체를 실패로 처리한다.
+Promise
+	.all([promise1, promise2])
+	.then(data => {
+    	const [promise1data, promsise2data] = data;
+    	console.log(promise1data,promise2data);
+})
+	.catch(err=>{
+    	console.log(err);
+});
+
+// Error: ooops error
+```
+
+이와 대조적으로 `Promise.race()`는 이터러블에 포함된 프로미스들 중 가장 먼저 성공 또는 실패한 결과를 반환한다.
+
+```javascript
+const promise1 = new Promise((resolve, reject)=>{
+    setTimeout(resolve, 500, 'first value');
+});
+const promise2 = new Promise((resolve, reject)=>{
+    setTimeout(resolve, 1000, 'second value');
+});
+
+Promise.race([promise1, promise2]).then(function(value){
+    console.log(value);
+    // 둘 다 성공하지만 promise1이 더 빨리 성공
+});
+
+// first value
+```
+
+_주의 : 비어 있는 이터러블을 전달하면 `.race()`는 영원히 보류된 상태로 남아 있다._
