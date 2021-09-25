@@ -91,3 +91,34 @@ fruits.return();		// {value: undefined, done: true}
 <br>
 
 <br>
+
+### :page_facing_up: 14.4. `.trow()` 로 오류 잡기
+
+---
+
+```javascript
+function* gen(){
+    try{
+        yield "Trying...";
+        yield "Trying harder...";
+        yield "Trying even harder...";
+    }
+    catch(err){
+        console.log("Error:" + err);
+    }
+}
+
+const myGenerator = gen();
+myGenerator.next();			// {value: 'Trying...', done: false}
+
+myGenerator.next();			// {value: 'Trying harder...', done: false}
+
+myGenerator.throw();		// Error:ooops
+							// {value: undefined, done: true}
+```
+
+`.throw()`를 호출했을 때 제너레이터는 오류를 반환했고, 실행할 수 있는 `yield`가 하나 더 남아있어도 종료되었다.
+
+<br>
+
+<br>
