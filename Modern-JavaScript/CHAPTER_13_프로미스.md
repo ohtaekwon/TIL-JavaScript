@@ -66,7 +66,7 @@ const makePizza = (ingredients, callback) => {
 
 ---
 
-MDN에서는 **프로미스(promise)**를 다음과 같이 정의한다.
+MDN에서는 **프로미스(promise)** 를 다음과 같이 정의한다.
 
 ​	프로미스는 비동기적 작업의 최종 성공 또는 실패를 나타내는 객체이다.
 
