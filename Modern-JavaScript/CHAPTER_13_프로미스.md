@@ -61,3 +61,97 @@ const makePizza = (ingredients, callback) => {
 <br>
 
 <br>
+
+### :page_facing_up: 13.2. 프로미스
+
+---
+
+MDN에서는 **프로미스(promise)**를 다음과 같이 정의한다.
+
+​	프로미스는 비동기적 작업의 최종 성공 또는 실패를 나타내는 객체이다.
+
+```javascript
+const myPromise = new Promise((resolve, reject)=>{
+    // 여기에 코드를 작성
+});
+```
+
+이런 방식으로 프로미스를 만든 후, 프로미스의 성공을 알리기 위해서는 `resolve`를,
+
+실패를 알리기 위해서는 `reject`를 호출하면 된다.
+
+<br>
+
+프로미스 안에서 즉시 `resolve`를 호출하면 어떤 값이 반환될까?
+
+```javascript
+const myPromise = new Promise((resolve, reject) =>{
+   resolve("The value we get from the promise"); 
+});
+
+myPromise.then(
+	data =>{
+        console.log(data);
+    });
+// The value we get from the promise
+```
+
+`resolve` 함수의 첫 번째 매개변수로 전달된 값이 콘솔에 출려고디는 것을 확인할 수 있다.
+
+`setTimeout()`을 사용하면 `resolve`가 호출되기 전까지 일정 시간을 기다릴 수 있다.
+
+```javascript
+const myPromise = new Promise((resolve, reject)=>{
+   setTimeout(()=>{
+       resolve("The value we get from the promise");
+   }, 3000); 
+});
+
+myPromise.then(
+	data => {
+    	console.log(data);
+});
+
+// 3초가 지난 후에 
+// The value we get from the promise
+```
+
+이처럼 프로미스는 많은 비동기 코드를 수행할 때 유용하다.
+
+위의 예시처럼 간단하게 `resolve`를 호출하여 프로미스가 성공하는 경우만 살폈지만 실제로도 오류가 발생하므로, `reject`를 이용한 오류 처리 방법도 살펴보자.
+
+```javascript
+const myPromise = new Promise((resolve, reject)=>{
+   setTimeout(()=>{
+       reject(new Error("this is our Error"));
+   }, 3000); 
+});
+
+myPromise
+// 프로미스가 성공할 때의 값을 얻을 때
+    .then(data =>{
+    console.log(data);
+})
+// 프로미스가 실패할 때의 오류를 처리
+	.catch(err => {
+    console.error(err);
+});
+
+/* 
+	Error: this is our Error
+    at <anonymous>:3:15 
+    (익명) @ VM373:12
+	Promise.catch(비동기)
+	(익명) @ VM373:11
+*/
+```
+
+- 프로미스가 성공할 때의 값을 얻는 데에 `.then()`을 사용하고,
+
+- 프로미스가 실패할 때의 오류를 처리하는 데에는 `.catch()`를 사용한다.
+
+출력된 오류 로그를 보면 오류가 발생한 위치를 알 수 있다. 단순히 `reject("this is our Error");`라고 작성하지 않고 `reject(new Error("this is our Error"));`라고 작성했기 때문이다.
+
+<br>
+
+<br>
