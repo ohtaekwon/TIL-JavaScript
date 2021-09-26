@@ -11,6 +11,10 @@
 - **심지어 사전에 정의된 속성이 아니여도 가능하다.!!** 
 - 또한 **Vue 3** 부터는`Object.defineProperty` 이 아닌 `proxy` 로 작업되고 있다.
 
+사용방법
+new Proxy(target, handler);
+target 은 proxy로 래핑할 객체를 넣어줍니다. 기본객체가 될수도 있고 proxy를 넣어줄 수도 있습니다. handler 는 객체의 기본적인 동작(접근, 할당, 순
+
 <br>
 
 ### :page_facing_up: 15.1. 프록시
