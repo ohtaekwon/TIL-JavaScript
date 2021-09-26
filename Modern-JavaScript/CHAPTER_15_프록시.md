@@ -2,7 +2,11 @@
 
 ###  :pencil: ***프록시***
 
-***프록시 (Proxy)란?***
+<br>
+
+들어가기전...
+
+## 프록시 (Proxy)
 
 **프록시** 는 객체의 **속성 접근, 속성 할당, 순회, 함수 호출** 등 객체의 기본적인 동작의 새로운 행동을 정의할 때 사용한다.
 
@@ -11,9 +15,35 @@
 - **심지어 사전에 정의된 속성이 아니여도 가능하다.!!** 
 - 또한 **Vue 3** 부터는`Object.defineProperty` 이 아닌 `proxy` 로 작업되고 있다.
 
-사용방법
+<br>
+
+## 사용방법
+
+```javascript
 new Proxy(target, handler);
-target 은 proxy로 래핑할 객체를 넣어줍니다. 기본객체가 될수도 있고 proxy를 넣어줄 수도 있습니다. handler 는 객체의 기본적인 동작(접근, 할당, 순
+```
+
+**target** 은 **proxy**로 래핑할 객체를 넣어준다. 기본객체가 될수도 있고 **proxy**를 넣어줄 수도 있습니다. 
+
+**handler** 는 객체의 기본적인 동작(접근, 할당, 순회 등등) 의 작업이 수행될때 **Proxy**의 동작을 정의하는 함수 객체를 넣어줍니다. 여기서 지정가능한 함수 객체는 13개로 다음과 같습니다.
+
+<br>
+
+## handler 정의 함수
+
+- get
+- set
+- has
+- defineProperty
+- deleteProperty
+- construct
+- apply
+- getPrototypeOf
+- setPrototypeOf
+- isExtensible
+- preventExtensions
+- getOwnPropertyDescriptor
+- ownKeys
 
 <br>
 
@@ -41,6 +71,8 @@ var x = new Proxy(target, handler);
 
 - `target` 은 객체, 함수, 다른 프록시 등 무엇이든 가능하다.
 - `handler`는 작업이 수행될 때 프록시의 동작을 정의하는 객체이다.
+
+
 
 <br>
 
@@ -198,6 +230,7 @@ dogProxy.name = 'Max';	// 'Max'
 dogProxy.age = 8;		// 8
 dogProxy.breed; 		// property not found
 ```
+
 `dog` 객체를 만들었지만 객체 내부에 `게터`와 `세터`를 따로 정의하지 않았다. 대신, 하나의 `게터`와 `세터`로 모든 속성을 처리할 수 있게 `handler`를 만들었다.
 
 - `게터`는 객체와 속성 두 인수를 받아 **해당 객체에 해당 속성이 존재하는지 확인** 하고, 존재하지 않으면 사용자가 지정한 메시지를 출력한다.
@@ -208,4 +241,3 @@ dogProxy.breed; 		// property not found
 <br>
 
 이와 같이 프록시를 사용하여 **더 짧고 깔끔한 코드** 와 **사용할 수 없는 속성에 접근할 때 사용자 지정 메시지를 출력** 하는 두가지를 얻을 수 있다.
-
