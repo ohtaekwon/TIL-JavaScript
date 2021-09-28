@@ -104,6 +104,51 @@ console.log(uniqueArray);	// (4) ['dad', 'mom', 'son', 'daughter']
 
 결과를 보면 새로운 배열에는 원래 배열의 고유한 원소만 포함한다.
 
+<br>
 
+<br>
+
+### :page_facing_up: 16.2. 위크셋
+
+---
+
+**위크셋(weakSet2)** 은 세트와 유사하지만 **객체**만 **포함**할 수 있다.
+
+```javascript
+let dad = {name : "Daddy", age : 50};
+let mom = {name : "Mummy", age : 45};
+
+const family = new WeakSet([dad,mom]);
+
+for(const person of family){
+    console.log(person);
+}
+// Uncaught TypeError: family is not iterable
+```
+
+`WeakSet`은 이터러블이 아니다. 이 예제처럼 `WeakSet`에 대해 `for of` 루프를 사용하려고 하면 작동하지 않는 것을 확인할 수 있다.
+
+`WeakSet`이 포함하는 객체가 **가비지 컬렉터(garbage collector)** 에 의해 삭제되면 해당 객체는 `WeakSet`에서도 자동으로 삭제된다.
+
+```javascript
+let dad = {name : "Daddy", age : 50};
+let mom = {name : "Mummy", age : 45};
+
+const family = new WeakSet([dad, mom]);
+
+dad = null;
+console.log(family);	// WeakSet {{…}, {…}}
+
+// 몇십 초 정도 기다린 후 다음을 실행하자.
+console.log(family);	// WeakSet {{…}}
+```
+
+브라우저 콘솔에서 이 예제를 실행하면, `dad = null`이 실행되고 얼마 후에 가비지 컬렉터가 실행되어 `family`에서 `dad` 객체가 제거된 것을 볼 수 있다. 
+
+이는 `dad`를 `null`로 설정했을 때 참조가 손실되었기 때문이다.
+
+<br>
+
+<br>
 
 
