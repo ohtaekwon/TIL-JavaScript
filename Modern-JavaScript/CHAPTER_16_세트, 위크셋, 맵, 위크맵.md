@@ -82,3 +82,28 @@ for(const person of family){
 `values()` 메서드는 제너레이터 함수와 비슷하게 `next()`를 호출할 수 있는 `iterator` 객체를 반환한다.
 
 <br>
+
+### 16.1.2. 배열에서 중복 제거하기
+
+고유한 값만 보유할 수 있는 `Set`의 특징을 이용하여 배열에서 중복을 제거할 수 있다.
+
+```javascript
+const myArray = ["dad", "mom", "son", "dad", "mom", "daughter"];
+
+const set = new Set(myArray);
+console.log(set)			// Set(4) {'dad', 'mom', 'son', 'daughter'}
+
+// Set 를 Array로 변환
+const uniqueArray = Array.from(set);
+console.log(uniqueArray);	// (4) ['dad', 'mom', 'son', 'daughter']
+
+// 동일 내용을 한 줄로 작성 가능
+const uniqueArray = Array.from(new Set(myArray));
+console.log(uniqueArray);	// (4) ['dad', 'mom', 'son', 'daughter']
+```
+
+결과를 보면 새로운 배열에는 원래 배열의 고유한 원소만 포함한다.
+
+
+
+
