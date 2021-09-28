@@ -10,7 +10,7 @@
 
 ---
 
-**세트(집합, set)**란 어떠한 자료형의 값이든 각 원소를 **고유하게** 저장하는 객체이다.
+**세트(집합, set)** 란 어떠한 자료형의 값이든 각 원소를 **고유하게** 저장하는 객체이다.
 
 ```javascript
 // 1.세트 생성
@@ -57,5 +57,28 @@ family;				// Set(0) {size: 0}
 `Set`에는 **size** 속성이 있으면 **delete** 를 사용해서 하나의 원소를 삭제하거나 **clear**를 사용하여 모든 원소를 삭제할 수 있다.
 
 또한 `Set`에는 키가 없기 때문에 `.keys()`를 호출하면 `.values()` 또는 `.entries()`를 호출하는 것과 동일한 결과를 얻는다.
+
+<br>
+
+### 16.1.1. `Set`에 대한 루프
+
+`.next()`를 사용하거나 `for of` 루프를 사용하는 두 가지 방법으로 `Set`에 대해 **반복**할 수 있다.
+
+```javascript
+// .next() 사용
+const iterator = family.values();
+iterator.next();		// {value: 'Dad', done: false}
+iterator.next();		// {value: 'Mom', done: false}
+
+// for of 루프 사용
+for(const person of family){
+    console.log(person);
+}
+// Dad
+// Mom
+// Son
+```
+
+`values()` 메서드는 제너레이터 함수와 비슷하게 `next()`를 호출할 수 있는 `iterator` 객체를 반환한다.
 
 <br>
