@@ -180,4 +180,41 @@ family.forEach((val,key)=>console.log(key,val));
 
 <br>
 
+### :page_facing_up: 16.4. 위크맵
+
+---
+
+**위크맵(weakmap)** 은 `키/값` 쌍의 모음이지만 키는 **객체**여야만 한다. `WeakSet`과 유사하게 `WeakMap`에서도 **키(객체)**는 **약하게(weakly)** 참조된다. 
+
+따라서, 키로 사용된 객체의 참조가 손실되어 가비지 컬렉터에 의해 수집되면 `WeakMap`에서도 해당 `키/값` 쌍이 자동으로 제거된다.
+
+`WeakMap`은 열거가 가능하지 않기 때문에 ***원소에 반복을 수행하는 것이 불가능하다.***
+
+```javascript
+let dad = {name : "Daddy"};
+let mom = {name : "Mommy"};
+
+const myMap = new Map();
+const myWeakMap = new WeakMap();
+
+myMap.set(dad, "any value");
+myWeakMap.set(mom, "any value");
+
+dad = null;
+mom = null;
+
+console.log(myMap);			// Map(1) {{…} => 'any value'}
+
+console.log(myWeakMap);		// WeakMap {{…} => 'any value'}
+
+// 몇 십 초 정도 기다린 후 다음을 실행.
+console.log(myMap);			// Map(1) {{…} => 'any value'}
+
+console.log(myWeakMap);		// WeakMap {}
+```
+
+결과를 보면 값을 `null`로 설정한 객체는 가비지 컬렉터에 의해 수집되기 때문에 `WeakMap`에서는 제거되었지만 `Map` 안에는 남아있다.
+
+
+
 
