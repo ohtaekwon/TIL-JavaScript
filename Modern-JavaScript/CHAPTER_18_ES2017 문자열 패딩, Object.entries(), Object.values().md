@@ -120,3 +120,31 @@ Object.entries(family);
 <br>
 
 <br>
+
+### :page_facing_up: 18.3. Object.entries()와 Object.values()
+
+---
+
+이 메서드는 객체가 소유한 **모든 속성 설명자**를 반환한다. 
+
+- 속성의 **value, writable, get, set, configurable, enumberable** 등을 반환한다.
+
+```javascript
+const myObj ={
+    name : "OHTAEKWON",
+    age : 25,
+    greet(){
+        console.log("hello");
+    },
+};
+Object.getOwnPropertyDescriptors(myObj);
+// age: {value: 25, writable: true, enumerable: true, configurable: true}
+
+// greet: {writable: true, enumerable: true, configurable: true, value: ƒ}
+
+// name: {value: 'OHTAEKWON', writable: true, enumerable: true, configurable: true}
+
+```
+
+<br>
+<br>
