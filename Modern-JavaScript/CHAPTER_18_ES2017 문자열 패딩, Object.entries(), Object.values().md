@@ -147,4 +147,11 @@ Object.getOwnPropertyDescriptors(myObj);
 ```
 
 <br>
+
 <br>
+
+### :page_facing_up: 18.4. 후행 쉼표
+
+---
+
+**후행 쉼표(trailing comma)** 는 사소한 문법 변경에 해당한다. 이제 객체나 함수를 작성할 때 마지막 매개변수인지 여부에 관계없이 각 매개변수 뒤에 **쉼표**를 찍는 것이 허용된다. 
