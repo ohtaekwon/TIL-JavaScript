@@ -70,4 +70,53 @@ strings.forEach(str => console.log(str.padStart(longestString)));
 
 "99".padStart(3,0);			// '099'
 ```
+<br>
 
+<br>
+
+### :page_facing_up: 18.2. Object.entries()와 Object.values()
+
+---
+
+객체 내부의 값에 쉽게 접근하느 방법도 도입되었다. 먼저 다음과 같은 객체를 생성한다.
+
+```javascript
+const family = {
+    father : "BTS",
+    mother : "IU",
+    son : "AKAMU",
+};
+```
+
+이전 버전의 자바스크립트에서는 다음과 같은 방법으로 객체 내부의 값에 접근했다.
+
+```javascript
+Object.keys(family);	// (3) ['father', 'mother', 'son']
+
+family.father;			// 'BTS'
+```
+
+즉 `Object.keys()`는 객체의 키만 반환하기 때문에, 값에 접근하기 위해서는 해당 키를 먼저 얻은 다음 그 키를 통해 값에 접근해야 했다.
+
+<br>
+
+##### `ES2017`에서 새롭게 도입된 객체에 접근 방법
+
+```javascript
+Object.values(family);			// (3) ['BTS', 'IU', 'AKAMU']
+
+Object.entries(family);
+/* 
+  [
+	["father", "BTS"],
+	["mother", "IU"],
+	["son", "AKAMU"]
+  ]
+*/
+```
+
+`Object.values()`는 **모든 값이 담긴 배열**을 반환하고, `Object.entries()`는 **키와 값**을 모두 포함하는 배열의 배열을 반환한다.
+
+<br>
+
+<br>
