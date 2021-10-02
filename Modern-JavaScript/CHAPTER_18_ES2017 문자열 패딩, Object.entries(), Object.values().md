@@ -35,3 +35,39 @@
 ```
 
 <br>
+
+### 18.1.1. padStart()와 오른쪽 정렬
+
+문자열을 오른쪽 정렬하고 싶을 때 `padStart()`를 활용할 수 있다.
+
+```javascript
+const strings = ["short", "medium length", "very long string"];
+
+const longestString = strings.sort(str => str.length).map(str => str.length)[0];
+
+console.log(longestString); // 5
+
+strings.forEach(str => console.log(str.padStart(longestString)));
+// short
+// medium length
+// very long string
+```
+
+- `string.sort(str => str.length)` : 먼저 가장 긴 문자열을 찾아서 그 길이를 측정했다.
+
+- 그런 다음 가장 긴 문자열의 길이를 기준으로 모든 문자열에 `padStart()`를 적용하면 모든 문자열을 완벽하게 오른쪽으로 정렬할 수 있다.
+
+<br>
+
+### 18.1.2. 패딩에 사용자 지정 값 추가
+
+패딩은 공백을 추가하는 것뿐만 아니라 문자열이나 숫자를 덧붙이는 데에도 사용할 수 있다.
+
+```javascript
+"hello".padEnd(17, " OH TAE KWON");			// 'hello OH TAE KWON'
+
+"1".padStart(3,0);			// '001'
+
+"99".padStart(3,0);			// '099'
+```
+
