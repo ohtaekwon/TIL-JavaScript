@@ -154,4 +154,46 @@ Object.getOwnPropertyDescriptors(myObj);
 
 ---
 
-**후행 쉼표(trailing comma)** 는 사소한 문법 변경에 해당한다. 이제 객체나 함수를 작성할 때 마지막 매개변수인지 여부에 관계없이 각 매개변수 뒤에 **쉼표**를 찍는 것이 허용된다. 
+**후행 쉼표(trailing comma)** 는 사소한 문법 변경에 해당한다. 
+
+이제 객체나 함수를 작성할 때 마지막 매개변수인지 여부에 관계없이 각 매개변수 뒤에 **쉼표**를 찍는 것이 허용된다. 
+
+```javascript
+// 기존
+const object = {
+    prop1 : "prop",
+    prop2 : "propop"
+};
+
+// 후행 쉼표 허용
+const object = {
+    prop1 : "prop",
+    prop2 : "propop",
+};
+```
+
+두 번째 속성 끝에 쉼표를 작성하였다. 단, 쉼표를 넣지 않아도 오류가 발생하는 것은 아니다.
+
+하지만 **속성을 추가하거나 변경할 때 실수를 줄이기 위해서 넣는 것이 좋다.**
+
+```javascript
+// 내가 작성한 코드
+const object = {
+    prop1 : "prop",
+    prop2 : "propop"
+};
+
+// 같이 개발하는 동류가 새로운 속성을 추가
+const object = {
+    prop1 : "prop",
+    prop2 : "propop"
+    prop3 : "propopop"
+};
+
+// prop2에 후행 쉼표가 없었기 때문에
+// 새 속성 prop3를 추가할 때 실수로 위와 같이 잘못된 코드를 작성할 수 있다.
+```
+
+<br>
+
+<br>
