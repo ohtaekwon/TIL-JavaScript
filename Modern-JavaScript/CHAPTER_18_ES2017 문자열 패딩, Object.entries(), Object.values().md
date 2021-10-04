@@ -222,7 +222,7 @@ const object = {
 
 ### 18.5.1 Atomics.add(), Atomics.sub(), Atomics.load(), Atomics.store()
 
-**Atomics.add()**는 호출 시에 3개의 인수, 즉 배열, 인덱스, 값을 인수로 받고, 더허가리르 수행하기 전에 해당 인덱스에 존재하던 이전 값을 반환한다.
+**Atomics.add()** 는 호출 시에 3개의 인수, 즉 배열, 인덱스, 값을 인수로 받고, 더허가리르 수행하기 전에 해당 인덱스에 존재하던 이전 값을 반환한다.
 
 ```javascript
 // SharedArrayBuffer를 생성
