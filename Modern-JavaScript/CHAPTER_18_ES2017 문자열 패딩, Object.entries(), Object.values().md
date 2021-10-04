@@ -197,3 +197,78 @@ const object = {
 <br>
 
 <br>
+
+### :page_facing_up: 18.5. 어토믹스
+
+---
+
+자바스크립트는 기본적으로 웹 브라우저 위에 단일 스레드로 동작하지만, `HTML5 웹 워커(Web worker) API` 도입으로 백그라운드 스레드에서도 코드 실행이 가능해짐에 따라 **멀티 스레드 환경**을 지원하기 위해 공유 메모리 모델과 **어토믹스(atomics)** 가 도입되었다.
+
+**MDN**에서는 어토믹스에 대해 다음과 같이 정의한다.
+
+​	메모리가 공유되면 여러 스레드가 메모리에서 동일한 데이터를 읽고 쓸 수 있다. **Atomics** 를 이용한 작업은 이러한 환경에서도 정확하게 값을 읽고 쓸 수 있게 해준다. 또, **Atomics** 를 이용한 작업은 다음 작업이 시작되기 전에 완료되고, **중단(interrupt)** 되지 않는 것이 보장된다.
+
+​	**Atomics** 는 생성자가 아니며 **Atomics** 의 모든 속성과 메서드는 **정적(static)** 이므로(예를 들어 **Math** 클래스와 마찬기지로), **Atomics**를 `new`연산자와 함께 사용하거나 함수 형태로 호출할 수는 없다.
+
+#### _Atomics의 메서드 중 일부는 다음과 같다._
+
+- `add` / `sub
+- `and` / `or` / `xor`
+- `load` / `store`
+
+**Atomics**는 범용 고정 길이 바이너리 데이터 버퍼를 표현하는 `SharedArrayBuffer` 객체와 함꼐 사용된다.
+
+<br>
+
+### 18.5.1 Atomics.add(), Atomics.sub(), Atomics.load(), Atomics.store()
+
+**Atomics.add()**는 호출 시에 3개의 인수, 즉 배열, 인덱스, 값을 인수로 받고, 더허가리르 수행하기 전에 해당 인덱스에 존재하던 이전 값을 반환한다.
+
+```javascript
+// SharedArrayBuffer를 생성
+const buffer = new SharedArrayBuffer(16);
+
+const uint8 = new Unit8Array(buffer);
+
+// 0번 인덱스에 값을 추가
+uint8[0] = 10;
+
+console.log(Atomics.add(uint8, 0, 5));
+
+
+// 10 + 5 = 15
+console.log(uint8[0])
+
+console.log(Atomics.load)
+```
+
+보다시피 `Atomics.add()`를 호출하면 해당 배열 인덱스에 존재하던 이전 값이 반환된다. 
+
+`unit8[0]`을 넣어 `console.log()`를 다시 호출하면 더하기를 수행한 결과인 `15`를 반환한다.
+
+배열에서 특정 값을 가져오기 위해서는 `Atomics.load()`에 배열과 인덱스를 인수로 전달하면 된다.
+
+`Atomics.sub()` 는 `Atomics.add()` 와 같은 방식으로 동작하지만 값을 뺀다.
+
+```javascript
+// SharedArrayBuffer를 생성
+const buffer = new SharedArrayBuffer(16);
+
+const uint8 = new Uint8Array(buffer);
+
+// 0번 인덱스에 값을 추가
+uint8[0] = 10;
+
+consoloe.log(Atomics.sub(uint8, 0, 5));		// 10
+
+// 10 - 5 = 5
+console.log(uint8[0])
+
+// 5
+console.log(Atomics.store(uint8, 0, 3));
+
+// 3
+console.log(Atomics.load(uint8,0))
+```
+
+
