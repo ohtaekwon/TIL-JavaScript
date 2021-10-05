@@ -171,5 +171,73 @@ asyncFunc();
 asyncFunc().catch(console.log);
 // TypeError: Failed to fetch
 ```
+<br>
+
+<br>
+
+### :large_blue_diamond: 참고 :large_blue_diamond:
+
+---
+
+<br>
+
+# 1. Promise.prototype.then()
+
+`then()` 메서드는 `Promise` 를 리턴하고 두 개의 콜백 함수를 인수로 받습니다. 하나는 `Promise`가 **이행**했을 때, 다른 하나는 **거부**했을 때를 위한 콜백 함수이다.
+
+```javascript
+const promise1 = new Promise((resolve, reject) => {
+  resolve('Success!');
+});
+
+promise1.then((value) => {
+  console.log(value);
+  // expected output: "Success!"
+});
+
+```
+
+<br>
+
+### _1.1 구문_
+
+```javascript
+p.then(onFulfilled, onRejected);
+
+p.then(function(value) {
+  // 이행
+}, function(reason) {
+  // 거부
+});
+```
+
+<br>
+
+### _1.2 매개변수_
+
+- **onFulfilled**
+  - `Promise`가 수행될 때 호출되는 `Function`으로, **이행 값(fulfillment value)** 하나를 인수로 받습니다.
+
+- **onRejected**
+  - `Promise`가 거부될 때 호출되는 `Function`으로, **거부 이유(rejection reason)** 하나를 인수로 받습니다.
+
+<br>
+
+### `then` 메서드 사용
+
+```javascript
+var p1 = new Promise(function(resolve, reject) {
+  resolve("성공!");
+  // 또는
+  // reject("오류!");
+});
+
+p1.then(function(value) {
+  console.log(value); // 성공!
+}, function(reason) {
+  console.log(reason); // 오류!
+});
+```
+
 
 
