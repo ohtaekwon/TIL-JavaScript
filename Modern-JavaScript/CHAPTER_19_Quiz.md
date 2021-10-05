@@ -41,7 +41,7 @@ func();
 
 <br>
 
-### 19.2. 다음 코드의 마지막 출력은?
+### 19.2. 다음 코드의 마지막 출력은? 답 : 3
 
 ```javascript
 function walk(amount){
@@ -81,4 +81,21 @@ go();
 `3.`  `uncaught exception : the value is too big`
 
 `4.`  `"finished"`
+
+<br>
+
+#### 풀이
+
+
+
+```javascript
+// you walked for 500ms
+// you walked for 300ms
+// you walked for 200ms
+// Uncaught (in promise) the value is too big
+```
+
+<br>
+
+
 
