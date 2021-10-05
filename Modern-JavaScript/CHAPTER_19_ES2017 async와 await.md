@@ -139,3 +139,37 @@ func();
 <br>
 
 <br>
+
+### :page_facing_up: 19.3. 오류 처리
+
+---
+
+일반적인 프로미스에서는 `.catch()` 를 사용하여 프로미스가 반환하는 오류들을 처리한다. `async/await` 문법을 사용할 떄도 크게 다르지 않다.
+
+```javascript
+async function asyncFunc(){
+    try{
+        let response = await fetch('your-url');
+    } catch(err){
+        console.log(err);
+    }
+}
+
+asyncFunc();
+// TypeError: Failed to fetch
+```
+
+보통은 `try..catch` 구문을 사용하여 오류를 처리하지만, 해당 구문 없이도 다음과 같이 오류를 처리할 수 있다.
+
+```javascript
+async function asyncFunc(){
+    let response = await fetch('your-url');
+}
+asyncFunc();
+// Uncaught (in promise) TypeError: Failed to fetch
+
+asyncFunc().catch(console.log);
+// TypeError: Failed to fetch
+```
+
+
